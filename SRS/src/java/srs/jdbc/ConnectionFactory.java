@@ -27,6 +27,6 @@ public class ConnectionFactory {
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost/srs",
                 "root",
-                "");
+                "root");
     }
 }
