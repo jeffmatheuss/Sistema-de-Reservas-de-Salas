@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author Laionel
  */
 public class HistoricoReserva {
+
     public int idHistoricoReserva;
     public int idUsuario;
     public int idSala;

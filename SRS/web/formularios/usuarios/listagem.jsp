@@ -26,10 +26,10 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>CPF</th>
                     <th>Nome</th>
                     <th>Sobrenome</th>
                     <th>Departamento</th>
-                    <th>CPF</th>
                     <th>Função</th>
                     <th>Alterar</th>
                     <th>Excluir</th>
@@ -37,24 +37,24 @@
             </thead>
             <tbody>
 
-                <jsp:useBean id="servicos" scope="page" class="cadastroclientes.servicos.ClienteServices"/>
+                <jsp:useBean id="servicos" scope="page" class="srs.servicos.UsuarioServices"/>
 
-                <c:forEach items="${servicos.todos}" var="cliente">
+                <c:forEach items="${servicos.todos}" var="usuario">
                     <tr>
-                        <td>${cliente.id}</td>
-                        <td>${cliente.nome}</td>
-                        <td>${cliente.sobrenome}</td>
-                        <td>${cliente.email}</td>
-                        <td>${cliente.cpf}</td>
-                        <td>${cliente.cidade.nome}</td>
-                        <td><a href="${pageContext.request.contextPath}/processaClientes?acao=prepAlteracao&id=${cliente.id}">Alterar</a></td>
-                        <td><a href="${pageContext.request.contextPath}/processaClientes?acao=prepExclusao&id=${cliente.id}">Excluir</a></td>
+                        <td>${Usuario.idUsuario}</td>
+                        <td>${Usuario.cpf}</td>
+                        <td>${Usuario.nome}</td>
+                        <td>${Usuario.sobrenome}</td>
+                        <td>${Usuario.departamento}</td>
+                        <td>${Usuario.funcao}</td>
+                        <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepAlteracao&id=${usuario.idUsuario}">Alterar</a></td>
+                        <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepExclusao&id=${usuario.idUsuario}">Excluir</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
 
-        <p><a href="${pageContext.request.contextPath}/formularios/clientes/novo.jsp">Novo Cliente</a></p>
+        <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Cliente</a></p>
         
         <p><a href="${pageContext.request.contextPath}/index.jsp">Tela Principal</a></p>
 

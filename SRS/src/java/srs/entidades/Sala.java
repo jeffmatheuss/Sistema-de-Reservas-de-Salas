@@ -10,7 +10,7 @@ package srs.entidades;
  * @author Laionel
  */
 public class Sala {
-    
+
     public int idSala;
     public String tipoSala;
     public String status;
@@ -74,5 +74,5 @@ public class Sala {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-    
+
 }
