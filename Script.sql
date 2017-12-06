@@ -59,7 +59,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `srs`.`HistoricoReservas` (
-  `idHistoricoReservas` INT(11) NOT NULL AUTO_INCREMENT,
+  `idHistoricoReserva` INT(11) NOT NULL AUTO_INCREMENT,
   `idUsuario` INT(11) NOT NULL,
   `idSala` INT(11) NOT NULL,
   `dataReserva` DATE NOT NULL,

@@ -12,6 +12,18 @@
         <title>SRS 1.0 - Sistema de Reservas de Salas</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
+        <h1>Sistema de Reservas de Salas</h1>
+
+        <p>
+            <a href="${pageContext.request.contextPath}/formularios/salas/listagem.jsp">Salas</a>
+        </p>
+        <p>
+            <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Usuários</a>
+        </p>
+        <p>
+            <a href="${pageContext.request.contextPath}/formularios/reservas/listagem.jsp">Reservas</a>
+        </p>
+
     </body>
 </html>
