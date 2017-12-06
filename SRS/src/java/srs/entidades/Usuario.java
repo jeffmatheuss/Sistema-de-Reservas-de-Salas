@@ -11,7 +11,14 @@ package srs.entidades;
  * @author Laionel Lellis
  */
 public class Usuario {
-
+    private int idUsuario;
+    private String cpf;
+    private String nome;
+    private String sobrenome;
+    private String departamento;
+    private String funcao;
+    private String senha;
+    
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -67,12 +74,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    private int idUsuario;
-    private String cpf;
-    private String nome;
-    private String sobrenome;
-    private String departamento;
-    private String funcao;
-    private String senha;
+ 
 }

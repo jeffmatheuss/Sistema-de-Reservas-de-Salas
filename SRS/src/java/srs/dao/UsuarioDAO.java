@@ -6,31 +6,29 @@
 package srs.dao;
 
 import srs.dao.*;
-import srs.entidades.Cidade;
-import srs.entidades.Cliente;
-import srs.entidades.Estado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import srs.entidades.Usuario;
 
 /**
- * DAO para a entidade Cliente.
+ * DAO para a entidade Usuario.
  *
  * @author David Buzatto
  */
-public class UsuarioDAO extends DAO<Cliente> {
+public class UsuarioDAO extends DAO<Usuario> {
 
     public UsuarioDAO() throws SQLException {
     }
 
     @Override
-    public void salvar( Cliente obj ) throws SQLException {
+    public void salvar( Usuario obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "INSERT INTO "
-                + "cliente( "
+                + "usuario( "
                 + "    nome, "
                 + "    sobrenome, "
                 + "    dataNascimento, "
@@ -60,10 +58,10 @@ public class UsuarioDAO extends DAO<Cliente> {
     }
 
     @Override
-    public void atualizar( Cliente obj ) throws SQLException {
+    public void atualizar( Usuario obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
-                "UPDATE cliente "
+                "UPDATE usuario "
                 + "SET"
                 + "    nome = ?, "
                 + "    sobrenome = ?,"
@@ -96,10 +94,10 @@ public class UsuarioDAO extends DAO<Cliente> {
     }
 
     @Override
-    public void excluir( Cliente obj ) throws SQLException {
+    public void excluir( Usuario obj ) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
-                "DELETE FROM cliente "
+                "DELETE FROM usuario "
                 + "WHERE"
                 + "    id = ?;" );
 
@@ -111,29 +109,29 @@ public class UsuarioDAO extends DAO<Cliente> {
     }
 
     @Override
-    public List<Cliente> listarTodos() throws SQLException {
+    public List<Usuario> listarTodos() throws SQLException {
 
-        List<Cliente> lista = new ArrayList<Cliente>();
+        List<Usuario> lista = new ArrayList<Usuario>();
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
-                + "    c.id idCliente, "
-                + "    c.nome nomeCliente, "
-                + "    c.sobreNome sobrenomeCliente, "
-                + "    c.dataNascimento dataNascimentoCliente, "
-                + "    c.cpf cpfCliente, "
-                + "    c.email emailCliente, "
-                + "    c.logradouro logradouroCliente, "
-                + "    c.numero numeroCliente, "
-                + "    c.bairro bairroCliente, "
-                + "    c.cep cepCliente, "
+                + "    c.id idUsuario, "
+                + "    c.nome nomeUsuario, "
+                + "    c.sobreNome sobrenomeUsuario, "
+                + "    c.dataNascimento dataNascimentoUsuario, "
+                + "    c.cpf cpfUsuario, "
+                + "    c.email emailUsuario, "
+                + "    c.logradouro logradouroUsuario, "
+                + "    c.numero numeroUsuario, "
+                + "    c.bairro bairroUsuario, "
+                + "    c.cep cepUsuario, "
                 + "    ci.id idCidade, "
                 + "    ci.nome nomeCidade, "
                 + "    e.id idEstado, "
                 + "    e.nome nomeEstado, "
                 + "    e.sigla siglaEstado "
                 + "FROM "
-                + "    cliente c, "
+                + "    usuario c, "
                 + "    cidade ci, "
                 + "    estado e "
                 + "WHERE"
@@ -144,31 +142,21 @@ public class UsuarioDAO extends DAO<Cliente> {
 
         while ( rs.next() ) {
 
-            Cliente c = new Cliente();
-            Cidade ci = new Cidade();
-            Estado e = new Estado();
+            Usuario u = new Usuario();
 
-            c.setId( rs.getInt( "idCliente" ) );
-            c.setNome( rs.getString( "nomeCliente" ) );
-            c.setSobrenome( rs.getString( "sobrenomeCliente" ) );
-            c.setDataNascimento( rs.getDate( "dataNascimentoCliente" ) );
-            c.setCpf( rs.getString( "cpfCliente" ) );
-            c.setEmail( rs.getString( "emailCliente" ) );
-            c.setLogradouro( rs.getString( "logradouroCliente" ) );
-            c.setNumero( rs.getString( "numeroCliente" ) );
-            c.setBairro( rs.getString( "bairroCliente" ) );
-            c.setCep( rs.getString( "cepCliente" ) );
-            c.setCidade( ci );
+            u.setId( rs.getInt( "idUsuario" ) );
+            u.setNome( rs.getString( "nomeUsuario" ) );
+            u.setSobrenome( rs.getString( "sobrenomeUsuario" ) );
+            u.setDataNascimento( rs.getDate( "dataNascimentoUsuario" ) );
+            u.setCpf( rs.getString( "cpfUsuario" ) );
+            u.setEmail( rs.getString( "emailUsuario" ) );
+            u.setLogradouro( rs.getString( "logradouroUsuario" ) );
+            u.setNumero( rs.getString( "numeroUsuario" ) );
+            u.setBairro( rs.getString( "bairroUsuario" ) );
+            u.setCep( rs.getString( "cepUsuario" ) );
+            u.setCidade( ci );
 
-            ci.setId( rs.getInt( "idCidade" ) );
-            ci.setNome( rs.getString( "nomeCidade" ) );
-            ci.setEstado( e );
-
-            e.setId( rs.getInt( "idEstado" ) );
-            e.setNome( rs.getString( "nomeEstado" ) );
-            e.setSigla( rs.getString( "siglaEstado" ) );
-
-            lista.add( c );
+            lista.add( u );
 
         }
 
@@ -180,29 +168,29 @@ public class UsuarioDAO extends DAO<Cliente> {
     }
 
     @Override
-    public Cliente obterPorId( int id ) throws SQLException {
+    public Usuario obterPorId( int id ) throws SQLException {
 
-        Cliente cliente = null;
+        Usuario usuario = null;
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
-                + "    c.id idCliente, "
-                + "    c.nome nomeCliente, "
-                + "    c.sobreNome sobrenomeCliente, "
-                + "    c.dataNascimento dataNascimentoCliente, "
-                + "    c.cpf cpfCliente, "
-                + "    c.email emailCliente, "
-                + "    c.logradouro logradouroCliente, "
-                + "    c.numero numeroCliente, "
-                + "    c.bairro bairroCliente, "
-                + "    c.cep cepCliente, "
+                + "    c.id idUsuario, "
+                + "    c.nome nomeUsuario, "
+                + "    c.sobreNome sobrenomeUsuario, "
+                + "    c.dataNascimento dataNascimentoUsuario, "
+                + "    c.cpf cpfUsuario, "
+                + "    c.email emailUsuario, "
+                + "    c.logradouro logradouroUsuario, "
+                + "    c.numero numeroUsuario, "
+                + "    c.bairro bairroUsuario, "
+                + "    c.cep cepUsuario, "
                 + "    ci.id idCidade, "
                 + "    ci.nome nomeCidade, "
                 + "    e.id idEstado, "
                 + "    e.nome nomeEstado, "
                 + "    e.sigla siglaEstado "
                 + "FROM "
-                + "    cliente c, "
+                + "    usuario c, "
                 + "    cidade ci, "
                 + "    estado e "
                 + "WHERE"
@@ -216,36 +204,26 @@ public class UsuarioDAO extends DAO<Cliente> {
 
         if ( rs.next() ) {
 
-            cliente = new Cliente();
-            Cidade cidade = new Cidade();
-            Estado estado = new Estado();
+            usuario = new Usuario();
 
-            cliente.setId( rs.getInt( "idCliente" ) );
-            cliente.setNome( rs.getString( "nomeCliente" ) );
-            cliente.setSobrenome( rs.getString( "sobrenomeCliente" ) );
-            cliente.setDataNascimento( rs.getDate( "dataNascimentoCliente" ) );
-            cliente.setCpf( rs.getString( "cpfCliente" ) );
-            cliente.setEmail( rs.getString( "emailCliente" ) );
-            cliente.setLogradouro( rs.getString( "logradouroCliente" ) );
-            cliente.setNumero( rs.getString( "numeroCliente" ) );
-            cliente.setBairro( rs.getString( "bairroCliente" ) );
-            cliente.setCep( rs.getString( "cepCliente" ) );
-            cliente.setCidade( cidade );
-
-            cidade.setId( rs.getInt( "idCidade" ) );
-            cidade.setNome( rs.getString( "nomeCidade" ) );
-            cidade.setEstado( estado );
-
-            estado.setId( rs.getInt( "idEstado" ) );
-            estado.setNome( rs.getString( "nomeEstado" ) );
-            estado.setSigla( rs.getString( "siglaEstado" ) );
+            usuario.setIdUsuario(rs.getInt( "idUsuario" ) );
+            usuario.setNome( rs.getString( "nomeUsuario" ) );
+            usuario.setSobrenome( rs.getString( "sobrenomeUsuario" ) );
+            usuario.setDataNascimento( rs.getDate( "dataNascimentoUsuario" ) );
+            usuario.setCpf( rs.getString( "cpfUsuario" ) );
+            usuario.setEmail( rs.getString( "emailUsuario" ) );
+            usuario.setLogradouro( rs.getString( "logradouroUsuario" ) );
+            usuario.setNumero( rs.getString( "numeroUsuario" ) );
+            usuario.setBairro( rs.getString( "bairroUsuario" ) );
+            usuario.setCep( rs.getString( "cepUsuario" ) );
+            usuario.setCidade( cidade );
 
         }
 
         rs.close();
         stmt.close();
 
-        return cliente;
+        return usuario;
 
     }
 
