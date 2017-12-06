@@ -1,7 +1,4 @@
 <%-- 
-    Document   : novo
-    Created on : 18/01/2011, 15:21:38
-    Author     : David
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,67 +9,60 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Excluir Cliente</title>
+        <title>Excluir Usuário</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css"/>
     </head>
 
     <body>
 
-        <h1>Excluir Cliente</h1>
+        <h1>Excluir Usuário</h1>
 
         <form method="post"
-              action="${pageContext.request.contextPath}/processaClientes">
+              action="${pageContext.request.contextPath}/processaUsuarios">
 
             <input name="acao" type="hidden" value="excluir"/>
-            <input name="id" type="hidden" value="${requestScope.cliente.id}"/>
+            <input name="idUsuario" type="hidden" value="${requestScope.usuario.idUsuario}"/>
 
             <table>
                 <tr>
-                    <td class="alinharDireita">Nome:</td>
-                    <td>${requestScope.cliente.nome}</td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Sobrenome:</td>
-                    <td>${requestScope.cliente.sobrenome}</td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Data de Nascimento<br/>(dd/mm/aaaa):</td>
+                    <td class="alinharDireita">CPF:</td>
                     <td>
-                        <fmt:formatDate pattern="dd/MM/yyyy"
-                                        value="${requestScope.cliente.dataNascimento}"/>
+                        ${requestScope.usuario.cpf}
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">CPF:</td>
-                    <td>${requestScope.cliente.cpf}</td>
+                    <td class="alinharDireita">Nome:</td>
+                    <td>
+                        ${requestScope.usuario.nome}
+                    </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Email:</td>
-                    <td>${requestScope.cliente.email}</td>
+                    <td class="alinharDireita">Sobrenome:</td>
+                    <td>
+                        ${requestScope.usuario.sobrenome}
+                    </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Logradouro:</td>
-                    <td>${requestScope.cliente.logradouro}</td>
+                    <td class="alinharDireita">Departamento:</td>
+                    <td>
+                        ${requestScope.usuario.departamento}
+                    </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Número:</td>
-                    <td>${requestScope.cliente.numero}</td>
+                    <td class="alinharDireita">Função:</td>
+                    <td>
+                        ${requestScope.usuario.funcao}"
+                    </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Bairro:</td>
-                    <td>${requestScope.cliente.bairro}</td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">CEP:</td>
-                    <td>${requestScope.cliente.cep}</td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Cidade:</td>
-                    <td>${requestScope.cliente.cidade.nome}</td>
+                    <td class="alinharDireita">Senha:</td>
+                    <td>
+                        ${requestScope.usuario.senha}
+                    </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/formularios/clientes/listagem.jsp">Voltar</a>
+                        <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Excluir"/>

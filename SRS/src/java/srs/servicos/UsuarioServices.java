@@ -13,8 +13,6 @@ import java.util.List;
 
 /**
  * Classe de serviços para a entidade Usuario.
- *
- * @author David Buzatto
  */
 public class UsuarioServices {
 

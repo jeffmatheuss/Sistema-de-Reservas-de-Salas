@@ -68,6 +68,7 @@ public class UsuarioDAO extends DAO<Usuario> {
         stmt.setString(4, obj.getDepartamento());
         stmt.setString(5, obj.getFuncao());
         stmt.setString(6, obj.getSenha());
+        stmt.setInt(7, obj.getIdUsuario());
 
         stmt.executeUpdate();
         stmt.close();
@@ -141,7 +142,8 @@ public class UsuarioDAO extends DAO<Usuario> {
                 + "    u.nome nomeUsuario, "
                 + "    u.sobrenome sobrenomeUsuario, "
                 + "    u.departamento departamentoUsuario, "
-                + "    u.funcao funcaoUsuario "
+                + "    u.funcao funcaoUsuario, "
+                + "    u.senha senhaUsuario "
                 + "FROM "
                 + "    usuario u "
                 + "WHERE"
@@ -161,6 +163,7 @@ public class UsuarioDAO extends DAO<Usuario> {
             u.setSobrenome(rs.getString("sobrenomeUsuario"));
             u.setDepartamento(rs.getString("departamentoUsuario"));
             u.setFuncao(rs.getString("funcaoUsuario"));
+            u.setSenha(rs.getString("senhaUsuario"));
 
         }
 

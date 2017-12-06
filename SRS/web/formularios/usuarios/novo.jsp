@@ -1,7 +1,4 @@
 <%-- 
-    Document   : novo
-    Created on : 18/01/2011, 15:21:38
-    Author     : David
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Novo Cliente</title>
+        <title>Novo Usuário</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css"/>
     </head>
 
     <body>
 
-        <h1>Novo Cliente</h1>
+        <h1>Novo Usuário</h1>
 
         <form method="post"
               action="${pageContext.request.contextPath}/processaUsuarios">

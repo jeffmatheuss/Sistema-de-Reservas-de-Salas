@@ -1,7 +1,4 @@
 <%-- 
-    Document   : listagem
-    Created on : 18/01/2011, 14:26:29
-    Author     : David
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -41,12 +38,12 @@
 
                 <c:forEach items="${servicos.todos}" var="usuario">
                     <tr>
-                        <td>${Usuario.idUsuario}</td>
-                        <td>${Usuario.cpf}</td>
-                        <td>${Usuario.nome}</td>
-                        <td>${Usuario.sobrenome}</td>
-                        <td>${Usuario.departamento}</td>
-                        <td>${Usuario.funcao}</td>
+                        <td>${usuario.idUsuario}</td>
+                        <td>${usuario.cpf}</td>
+                        <td>${usuario.nome}</td>
+                        <td>${usuario.sobrenome}</td>
+                        <td>${usuario.departamento}</td>
+                        <td>${usuario.funcao}</td>                        
                         <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepAlteracao&id=${usuario.idUsuario}">Alterar</a></td>
                         <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepExclusao&id=${usuario.idUsuario}">Excluir</a></td>
                     </tr>
@@ -54,7 +51,7 @@
             </tbody>
         </table>
 
-        <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Cliente</a></p>
+        <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Usuário</a></p>
         
         <p><a href="${pageContext.request.contextPath}/index.jsp">Tela Principal</a></p>
 

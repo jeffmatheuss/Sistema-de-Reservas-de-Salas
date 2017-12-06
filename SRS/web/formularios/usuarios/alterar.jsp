@@ -1,7 +1,4 @@
 <%-- 
-    Document   : novo
-    Created on : 18/01/2011, 15:21:38
-    Author     : David
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -13,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alterar Cliente</title>
+        <title>Alterar Usuário</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css"/>
     </head>
 
@@ -22,105 +19,51 @@
         <h1>Alterar Cliente</h1>
 
         <form method="post"
-              action="${pageContext.request.contextPath}/processaClientes">
+              action="${pageContext.request.contextPath}/processaUsuarios">
 
             <input name="acao" type="hidden" value="alterar"/>
-            <input name="id" type="hidden" value="${requestScope.cliente.id}"/>
+            <input name="idUsuario" type="hidden" value="${requestScope.usuario.idUsuario}"/>
 
             <table>
                 <tr>
+                    <td class="alinharDireita">CPF:</td>
+                    <td>
+                        <input name="cpf" type="text" size="13" value="${requestScope.usuario.cpf}"/>
+                    </td>
+                </tr>
+                <tr>
                     <td class="alinharDireita">Nome:</td>
                     <td>
-                        <input name="nome" type="text" size="20"
-                               value="${requestScope.cliente.nome}"/>
+                        <input name="nome" type="text" size="20" value="${requestScope.usuario.nome}"/>
                     </td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Sobrenome:</td>
                     <td>
-                        <input name="sobrenome" type="text" size="20"
-                               value="${requestScope.cliente.sobrenome}"/>
+                        <input name="sobrenome" type="text" size="20" value="${requestScope.usuario.sobrenome}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Data de Nascimento<br/>(dd/mm/aaaa):</td>
+                    <td class="alinharDireita">Departamento:</td>
                     <td>
-
-                        <fmt:formatDate pattern="dd/MM/yyyy"
-                                        value="${requestScope.cliente.dataNascimento}"
-                                        var="data" scope="page"/>
-
-                        <input name="dataNascimento" type="text" size="8"
-                               value="${data}"/>
-
+                        <input name="departamento" type="text" size="20" value="${requestScope.usuario.departamento}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">CPF:</td>
+                    <td class="alinharDireita">Função:</td>
                     <td>
-                        <input name="cpf" type="text" size="13"
-                               value="${requestScope.cliente.cpf}"/>
+                        <input name="funcao" type="text" size="20" value="${requestScope.usuario.funcao}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Email:</td>
+                    <td class="alinharDireita">Senha:</td>
                     <td>
-                        <input name="email" type="text" size="20"
-                               value="${requestScope.cliente.email}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Logradouro:</td>
-                    <td>
-                        <input name="logradouro" type="text" size="25"
-                               value="${requestScope.cliente.logradouro}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Número:</td>
-                    <td>
-                        <input name="numero" type="text" size="6"
-                               value="${requestScope.cliente.numero}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Bairro:</td>
-                    <td>
-                        <input name="bairro" type="text" size="15"
-                               value="${requestScope.cliente.bairro}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">CEP:</td>
-                    <td>
-                        <input name="cep" type="text" size="7"
-                               value="${requestScope.cliente.cep}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Cidade:</td>
-                    <td>
-
-                        <jsp:useBean id="servicos" scope="page" class="cadastroclientes.servicos.CidadeServices"/>
-
-                        <select name="idCidade">
-                            <c:forEach items="${servicos.todos}" var="cidade">
-                                <c:choose>
-                                    <c:when test="${requestScope.cliente.cidade.id eq cidade.id}">
-                                        <option value="${cidade.id}" selected="true">${cidade.nome}</option>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="${cidade.id}">${cidade.nome}</option>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:forEach>
-                        </select>
-
+                        <input name="senha" type="text" size="20" value="${requestScope.usuario.senha}" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/formularios/clientes/listagem.jsp">Voltar</a>
+                        <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Alterar"/>

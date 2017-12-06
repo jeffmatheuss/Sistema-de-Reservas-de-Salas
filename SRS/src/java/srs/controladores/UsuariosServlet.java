@@ -34,26 +34,26 @@ public class UsuariosServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String acao = request.getParameter("acao");
         UsuarioDAO dao = null;
         RequestDispatcher disp = null;
-        
+
         try {
-            
+
             dao = new UsuarioDAO();
-            
+
             if (acao.equals("criar")) {
-                
+
                 String cpf = request.getParameter("cpf");
                 String nome = request.getParameter("nome");
                 String sobrenome = request.getParameter("sobrenome");
                 String departamento = request.getParameter("departamento");
                 String funcao = request.getParameter("funcao");
                 String senha = request.getParameter("senha");
-                
+
                 Usuario u = new Usuario();
-                
+
                 u.setCpf(cpf);
                 u.setNome(nome);
                 u.setSobrenome(sobrenome);
@@ -61,21 +61,13 @@ public class UsuariosServlet extends HttpServlet {
                 u.setFuncao(funcao);
                 u.setSenha(senha);
 
-                /*                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                
-                try {
-                    java.util.Date data = sdf.parse(dataNascimento);
-                    c.setDataNascimento(new java.sql.Date(data.getTime()));
-                } catch (ParseException exc) {
-                    
-                }*/
                 dao.salvar(u);
-                
+
                 disp = request.getRequestDispatcher(
                         "/formularios/usuarios/listagem.jsp");
-                
+
             } else if (acao.equals("alterar")) {
-                
+
                 int id = Integer.parseInt(request.getParameter("idUsuario"));
                 String cpf = request.getParameter("cpf");
                 String nome = request.getParameter("nome");
@@ -83,7 +75,7 @@ public class UsuariosServlet extends HttpServlet {
                 String departamento = request.getParameter("departamento");
                 String funcao = request.getParameter("funcao");
                 String senha = request.getParameter("senha");
-                
+
                 Usuario u = new Usuario();
                 u.setIdUsuario(id);
                 u.setCpf(cpf);
@@ -92,44 +84,44 @@ public class UsuariosServlet extends HttpServlet {
                 u.setDepartamento(departamento);
                 u.setFuncao(funcao);
                 u.setSenha(senha);
-                
+
                 dao.atualizar(u);
-                
+
                 disp = request.getRequestDispatcher(
                         "/formularios/usuarios/listagem.jsp");
-                
+
             } else if (acao.equals("excluir")) {
-                
-                int id = Integer.parseInt(request.getParameter("id"));
-                
+
+                int id = Integer.parseInt(request.getParameter("idUsuario"));
+
                 Usuario u = new Usuario();
                 u.setIdUsuario(id);
-                
+
                 dao.excluir(u);
-                
+
                 disp = request.getRequestDispatcher(
                         "/formularios/usuarios/listagem.jsp");
-                
+
             } else if (acao.equals("prepAlteracao")) {
-                
+
                 int id = Integer.parseInt(request.getParameter("id"));
                 Usuario u = dao.obterPorId(id);
                 request.setAttribute("usuario", u);
-                
+
                 disp = request.getRequestDispatcher(
                         "/formularios/usuarios/alterar.jsp");
-                
+
             } else if (acao.equals("prepExclusao")) {
-                
+
                 int id = Integer.parseInt(request.getParameter("id"));
                 Usuario u = dao.obterPorId(id);
                 request.setAttribute("usuario", u);
-                
+
                 disp = request.getRequestDispatcher(
                         "/formularios/usuarios/excluir.jsp");
-                
+
             }
-            
+
         } catch (SQLException exc) {
             exc.printStackTrace();
         } finally {
@@ -141,11 +133,11 @@ public class UsuariosServlet extends HttpServlet {
                 }
             }
         }
-        
+
         if (disp != null) {
             disp.forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
