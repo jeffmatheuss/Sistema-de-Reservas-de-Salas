@@ -14,7 +14,7 @@ import srs.entidades.Usuario;
 /**
  * DAO para a entidade Usuario.
  *
- * @author David Buzatto
+ * @author Laionel
  */
 public class UsuarioDAO extends DAO<Usuario> {
 

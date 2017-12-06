@@ -18,51 +18,51 @@
         <h1>Excluir Usuário</h1>
 
         <form method="post"
-              action="${pageContext.request.contextPath}/processaReservas">
+              action="${pageContext.request.contextPath}/processaUsuarios">
 
             <input name="acao" type="hidden" value="excluir"/>
-            <input name="idReserva" type="hidden" value="${requestScope.reserva.idReserva}"/>
+            <input name="idUsuario" type="hidden" value="${requestScope.usuario.idUsuario}"/>
 
             <table>
                 <tr>
                     <td class="alinharDireita">CPF:</td>
                     <td>
-                        ${requestScope.reserva.cpf}
+                        ${requestScope.usuario.cpf}
                     </td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Nome:</td>
                     <td>
-                        ${requestScope.reserva.nome}
+                        ${requestScope.usuario.nome}
                     </td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Sobrenome:</td>
                     <td>
-                        ${requestScope.reserva.sobrenome}
+                        ${requestScope.usuario.sobrenome}
                     </td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Departamento:</td>
                     <td>
-                        ${requestScope.reserva.departamento}
+                        ${requestScope.usuario.departamento}
                     </td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Função:</td>
                     <td>
-                        ${requestScope.reserva.funcao}"
+                        ${requestScope.usuario.funcao}"
                     </td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Senha:</td>
                     <td>
-                        ${requestScope.reserva.senha}
+                        ${requestScope.usuario.senha}
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/formularios/reservas/listagem.jsp">Voltar</a>
+                        <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Excluir"/>
