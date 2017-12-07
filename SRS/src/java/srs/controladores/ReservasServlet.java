@@ -6,6 +6,7 @@ package srs.controladores;
 
 import srs.dao.ReservaDAO;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,9 +44,9 @@ public class ReservasServlet extends HttpServlet {
 
             if (acao.equals("criar")) {
 
-                String cpf = request.getParameter("cpf");
-                String nome = request.getParameter("nome");
-                String sobrenome = request.getParameter("sobrenome");
+                int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+                int idSala = Integer.parseInt(request.getParameter("idSala"));
+                Date dataReserva = request.getParameter("dataReserva");
                 String departamento = request.getParameter("departamento");
                 String funcao = request.getParameter("funcao");
                 String senha = request.getParameter("senha");
@@ -164,6 +165,7 @@ public class ReservasServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         processRequest(request, response);
     }
 

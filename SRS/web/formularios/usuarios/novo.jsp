@@ -18,7 +18,7 @@
         <h1>Novo Usuário</h1>
 
         <form method="post"
-              action="${pageContext.request.contextPath}/processaReservas">
+              action="${pageContext.request.contextPath}/processaUsuarios">
 
             <input name="acao" type="hidden" value="criar"/>
 
@@ -61,7 +61,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/formularios/reservas/listagem.jsp">Voltar</a>
+                        <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Salvar"/>

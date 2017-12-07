@@ -3,10 +3,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML">
 
-<html>
+<html lang="pt-br">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Usuários Cadastrados</title>
@@ -15,9 +14,9 @@
 
     <body>
         
-        <h1>Lista de Reservas</h1>
+        <h1>Lista de Usuarios</h1>
 
-        <p><a href="${pageContext.request.contextPath}/formularios/reservas/novo.jsp">Novo Usuário</a></p>
+        <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Usuário</a></p>
 
         <table class="tabelaListagem">
             <thead>
@@ -34,24 +33,24 @@
             </thead>
             <tbody>
 
-                <jsp:useBean id="servicos" scope="page" class="srs.servicos.ReservaServices"/>
+                <jsp:useBean id="servicos" scope="page" class="srs.servicos.UsuarioServices"/>
 
-                <c:forEach items="${servicos.todos}" var="reserva">
+                <c:forEach items="${servicos.todos}" var="usuario">
                     <tr>
-                        <td>${reserva.idReserva}</td>
-                        <td>${reserva.cpf}</td>
-                        <td>${reserva.nome}</td>
-                        <td>${reserva.sobrenome}</td>
-                        <td>${reserva.departamento}</td>
-                        <td>${reserva.funcao}</td>                        
-                        <td><a href="${pageContext.request.contextPath}/processaReservas?acao=prepAlteracao&id=${reserva.idReserva}">Alterar</a></td>
-                        <td><a href="${pageContext.request.contextPath}/processaReservas?acao=prepExclusao&id=${reserva.idReserva}">Excluir</a></td>
+                        <td>${usuario.idUsuario}</td>
+                        <td>${usuario.cpf}</td>
+                        <td>${usuario.nome}</td>
+                        <td>${usuario.sobrenome}</td>
+                        <td>${usuario.departamento}</td>
+                        <td>${usuario.funcao}</td>                        
+                        <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepAlteracao&id=${usuario.idUsuario}">Alterar</a></td>
+                        <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepExclusao&id=${usuario.idUsuario}">Excluir</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
 
-        <p><a href="${pageContext.request.contextPath}/formularios/reservas/novo.jsp">Novo Usuário</a></p>
+        <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Usuário</a></p>
         
         <p><a href="${pageContext.request.contextPath}/index.jsp">Tela Principal</a></p>
 
