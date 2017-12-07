@@ -2,15 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package srs.entidades;
 
 /**
- * Entidade Usuário.
  *
  * @author Laionel Lellis
  */
 public class Usuario {
+
+    private int idUsuario;
+    private String cpf;
+    private String nome;
+    private String sobrenome;
+    private String departamento;
+    private String funcao;
+    private String senha;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -68,11 +74,4 @@ public class Usuario {
         this.senha = senha;
     }
 
-    private int idUsuario;
-    private String cpf;
-    private String nome;
-    private String sobrenome;
-    private String departamento;
-    private String funcao;
-    private String senha;
 }

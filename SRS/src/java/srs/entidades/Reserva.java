@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author Laionel
  */
 public class Reserva {
+
     public int idReserva;
     public int idUsuario;
     public int idSala;
@@ -48,5 +49,5 @@ public class Reserva {
     public void setDataReserva(Date dataReserva) {
         this.dataReserva = dataReserva;
     }
-    
+
 }
