@@ -76,14 +76,14 @@ public class SalaDAO extends DAO<Sala> {
     }
 
     @Override
-    public void excluir(Usuario obj) throws SQLException {
+    public void excluir(Sala obj) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
-                "DELETE FROM usuario "
+                "DELETE FROM sala "
                 + "WHERE"
                 + "    idUsuario = ? ; ");
 
-        stmt.setInt(1, obj.getIdUsuario());
+        stmt.setInt(1, obj.getIdSala());
 
         stmt.executeUpdate();
         stmt.close();
@@ -91,63 +91,63 @@ public class SalaDAO extends DAO<Sala> {
     }
 
     @Override
-    public List<Usuario> listarTodos() throws SQLException {
+    public List<Sala> listarTodos() throws SQLException {
 
-        List<Usuario> lista = new ArrayList<Usuario>();
+        List<Sala> lista = new ArrayList<Sala>();
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
-                + "    u.idUsuario idUsuario, "
-                + "    u.cpf cpfUsuario, "
-                + "    u.nome nomeUsuario, "
-                + "    u.sobrenome sobrenomeUsuario, "
-                + "    u.departamento departamentoUsuario, "
-                + "    u.funcao funcaoUsuario "
+                + "    s.idSala idSala, "
+                + "    s.tipoSala tipoSala"
+                + "    s.status statusSala, "
+                + "    s.descricao descricaoSala, "
+                + "    s.local localSala, "
+                + "    s.estadoConservacao estadoConservacaoSala, "
+                + "    s.numero numeroSala "
                 + "FROM "
-                + "    usuario u ");
+                + "    sala s ");
 
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
 
-            Usuario u = new Usuario();
+            Sala s = new Sala();
 
-            u.setIdUsuario(rs.getInt("idUsuario"));
-            u.setCpf(rs.getString("cpfUsuario"));
-            u.setNome(rs.getString("nomeUsuario"));
-            u.setSobrenome(rs.getString("sobrenomeUsuario"));
-            u.setDepartamento(rs.getString("departamentoUsuario"));
-            u.setFuncao(rs.getString("funcaoUsuario"));
+            s.setIdSala(rs.getInt("idSala"));
+            s.setTipoSala(rs.getString("TipoSala"));
+            s.setStatus(rs.getString("statusSala"));
+            s.setDescricao(rs.getString("descricaoSala"));
+            s.setLocal(rs.getString("localSala"));
+            s.setEstadoConservacao(rs.getString("estadoConservacao"));
+            s.setNumero(rs.getString("numeroSala"));
 
-            lista.add(u);
-
-        }
+            lista.add(s);
 
         rs.close();
         stmt.close();
 
+        }
         return lista;
-
     }
 
     @Override
-    public Usuario obterPorId(int id) throws SQLException {
+    public Sala obterPorId(int id) throws SQLException {
 
-        Usuario u = null;
+        Sala s = null;
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
-                + "    u.idUsuario idUsuario, "
-                + "    u.cpf cpfUsuario, "
-                + "    u.nome nomeUsuario, "
-                + "    u.sobrenome sobrenomeUsuario, "
-                + "    u.departamento departamentoUsuario, "
-                + "    u.funcao funcaoUsuario, "
-                + "    u.senha senhaUsuario "
+                + "    s.idSala idSala, "
+                + "    s.tipoSala tipoSala"
+                + "    s.status statusSala, "
+                + "    s.descricao descricaoSala, "
+                + "    s.local localSala, "
+                + "    s.estadoConservacao estadoConservacaoSala, "
+                + "    s.numero numeroSala "
                 + "FROM "
-                + "    usuario u "
+                + "    sala s "
                 + "WHERE"
-                + "    u.idUsuario = ? ");
+                + "    s.idSala = ? ");
 
         stmt.setInt(1, id);
 
@@ -155,22 +155,23 @@ public class SalaDAO extends DAO<Sala> {
 
         if (rs.next()) {
 
-            u = new Usuario();
+            s = new Sala();
 
-            u.setIdUsuario(rs.getInt("idUsuario"));
-            u.setCpf(rs.getString("cpfUsuario"));
-            u.setNome(rs.getString("nomeUsuario"));
-            u.setSobrenome(rs.getString("sobrenomeUsuario"));
-            u.setDepartamento(rs.getString("departamentoUsuario"));
-            u.setFuncao(rs.getString("funcaoUsuario"));
-            u.setSenha(rs.getString("senhaUsuario"));
+            s.setIdSala(rs.getInt("idSala"));
+            s.setTipoSala(rs.getString("TipoSala"));
+            s.setStatus(rs.getString("statusSala"));
+            s.setDescricao(rs.getString("descricaoSala"));
+            s.setLocal(rs.getString("localSala"));
+            s.setEstadoConservacao(rs.getString("estadoConservacao"));
+            s.setNumero(rs.getString("numeroSala"));
 
         }
+    
 
         rs.close();
         stmt.close();
 
-        return u;
+        return s;
 
     }
 
