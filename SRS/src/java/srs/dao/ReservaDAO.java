@@ -26,14 +26,20 @@ public class ReservaDAO extends DAO<Reserva> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "INSERT INTO "
                 + "reserva( "
-                + "    idUsuario = ?, "
-                + "    idSala = ?, "
-                + "    dataReserva = ? )"
-                + "VALUES( ?, ?, ? );");
+                + "    cpf, "
+                + "    nome, "
+                + "    sobrenome, "
+                + "    departamento, "
+                + "    funcao, "
+                + "    senha )"
+                + "VALUES( ?, ?, ?, ?, ?, ? );");
 
-        stmt.setInt(1, obj.getIdUsuario());
-        stmt.setInt(2, obj.getIdSala());
-        stmt.setDate(3, obj.getDataReserva());
+        stmt.setString(1, obj.getCpf());
+        stmt.setString(2, obj.getNome());
+        stmt.setString(3, obj.getSobrenome());
+        stmt.setString(4, obj.getDepartamento());
+        stmt.setString(5, obj.getFuncao());
+        stmt.setString(6, obj.getSenha());
 
         stmt.executeUpdate();
         stmt.close();
@@ -46,15 +52,21 @@ public class ReservaDAO extends DAO<Reserva> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "UPDATE reserva "
                 + "SET"
-                + "    idUsuario = ?, "
-                + "    idSala = ?, "
-                + "    dataReserva = ? "
+                + "    cpf = ?, "
+                + "    nome = ?, "
+                + "    sobrenome = ?, "
+                + "    departamento = ?, "
+                + "    funcao = ?, "
+                + "    senha = ? "
                 + "WHERE"
                 + "    idReserva = ? ; ");
 
-        stmt.setInt(1, obj.getIdUsuario());
-        stmt.setInt(2, obj.getIdSala());
-        stmt.setDate(3, obj.getDataReserva());
+        stmt.setString(1, obj.getCpf());
+        stmt.setString(2, obj.getNome());
+        stmt.setString(3, obj.getSobrenome());
+        stmt.setString(4, obj.getDepartamento());
+        stmt.setString(5, obj.getFuncao());
+        stmt.setString(6, obj.getSenha());
         stmt.setInt(7, obj.getIdReserva());
 
         stmt.executeUpdate();
@@ -84,12 +96,14 @@ public class ReservaDAO extends DAO<Reserva> {
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
-                + "    r.idReserva idReserva, "
-                + "    r.idUsuario idUsuario, "
-                + "    r.idSala idSala, "
-                + "    r.dataReserva dataReserva "
+                + "    u.idReserva idReserva, "
+                + "    u.cpf cpfReserva, "
+                + "    u.nome nomeReserva, "
+                + "    u.sobrenome sobrenomeReserva, "
+                + "    u.departamento departamentoReserva, "
+                + "    u.funcao funcaoReserva "
                 + "FROM "
-                + "    reserva r ");
+                + "    reserva u ");
 
         ResultSet rs = stmt.executeQuery();
 
@@ -98,9 +112,11 @@ public class ReservaDAO extends DAO<Reserva> {
             Reserva r = new Reserva();
 
             r.setIdReserva(rs.getInt("idReserva"));
-            r.setIdUsuario(rs.getInt("idUsuario"));
-            r.setIdSala(rs.getInt("idSala"));
-            r.setDataReserva(rs.getDate("dataReserva"));
+            r.setCpf(rs.getString("cpfReserva"));
+            r.setNome(rs.getString("nomeReserva"));
+            r.setSobrenome(rs.getString("sobrenomeReserva"));
+            r.setDepartamento(rs.getString("departamentoReserva"));
+            r.setFuncao(rs.getString("funcaoReserva"));
 
             lista.add(r);
 
@@ -121,13 +137,16 @@ public class ReservaDAO extends DAO<Reserva> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
                 + "    r.idReserva idReserva, "
-                + "    r.idUsuario idUsuario, "
-                + "    r.idSala idSala, "
-                + "    r.dataReserva dataReserva "
+                + "    r.cpf cpfReserva, "
+                + "    r.nome nomeReserva, "
+                + "    r.sobrenome sobrenomeReserva, "
+                + "    r.departamento departamentoReserva, "
+                + "    r.funcao funcaoReserva, "
+                + "    r.senha senhaReserva "
                 + "FROM "
                 + "    reserva r "
                 + "WHERE"
-                + "    r.idReserva = ? ");
+                + "    u.idReserva = ? ");
 
         stmt.setInt(1, id);
 
@@ -138,9 +157,12 @@ public class ReservaDAO extends DAO<Reserva> {
             r = new Reserva();
 
             r.setIdReserva(rs.getInt("idReserva"));
-            r.setIdUsuario(rs.getInt("idUsuario"));
-            r.setIdSala(rs.getInt("idSala"));
-            r.setDataReserva(rs.getDate("dataReserva"));
+            r.setCpf(rs.getString("cpfReserva"));
+            r.setNome(rs.getString("nomeReserva"));
+            r.setSobrenome(rs.getString("sobrenomeReserva"));
+            r.setDepartamento(rs.getString("departamentoReserva"));
+            r.setFuncao(rs.getString("funcaoReserva"));
+            r.setSenha(rs.getString("senhaReserva"));
 
         }
 

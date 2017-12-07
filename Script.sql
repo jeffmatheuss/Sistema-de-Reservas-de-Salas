@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `srs`.`HistoricoReservas` (
   `idSala` INT(11) NOT NULL,
   `dataReserva` DATE NOT NULL,
   `estadoConservacao` VARCHAR(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`idHistoricoReserva`),
+  PRIMARY KEY (`idHistoricoReservas`),
   INDEX `idUsuarioHistorico_idx` (`idUsuario` ASC),
   INDEX `idSalaHistorico_idx` (`idSala` ASC),
   CONSTRAINT `idUsuarioHistorico`
