@@ -52,16 +52,16 @@ public class SalaServlet extends HttpServlet {
                 String estadoConservacao = request.getParameter("estadoConservacao");
                 String numero = request.getParameter("numero");
 
-                Sala a = new Sala();
+                Sala s = new Sala();
 
-                a.setTipoSala(tipoSala);
-                a.setStatus(status);
-                a.setDescricao(descricao);
-                a.setLocal(local);
-                a.setEstadoConservacao(estadoConservacao);
-                a.setNumero(numero);
+                s.setTipoSala(tipoSala);
+                s.setStatus(status);
+                s.setDescricao(descricao);
+                s.setLocal(local);
+                s.setEstadoConservacao(estadoConservacao);
+                s.setNumero(numero);
 
-                dao.salvar(a);
+                dao.salvar(s);
 
                 disp = request.getRequestDispatcher(
                         "/formularios/salas/listagem.jsp");
@@ -76,16 +76,16 @@ public class SalaServlet extends HttpServlet {
                 String estadoConservacao = request.getParameter("estadoConservacao");
                 String numero = request.getParameter("numero");
 
-                Sala a = new Sala();
+                Sala s = new Sala();
 
-                a.setTipoSala(tipoSala);
-                a.setStatus(status);
-                a.setDescricao(descricao);
-                a.setLocal(local);
-                a.setEstadoConservacao(estadoConservacao);
-                a.setNumero(numero);
-
-                dao.atualizar(a);
+                s.setTipoSala(tipoSala);
+                s.setStatus(status);
+                s.setDescricao(descricao);
+                s.setLocal(local);
+                s.setEstadoConservacao(estadoConservacao);
+                s.setNumero(numero);
+                
+                dao.atualizar(s);
 
                 disp = request.getRequestDispatcher(
                         "/formularios/salas/listagem.jsp");
@@ -94,10 +94,10 @@ public class SalaServlet extends HttpServlet {
 
                 int id = Integer.parseInt(request.getParameter("idSala"));
 
-                Sala a = new Sala();
-                a.setIdSala(id);
+                Sala s = new Sala();
+                s.setIdSala(id);
 
-                dao.excluir(a);
+                dao.excluir(s);
 
                 disp = request.getRequestDispatcher(
                         "/formularios/sala/listagem.jsp");
@@ -105,8 +105,8 @@ public class SalaServlet extends HttpServlet {
             } else if (acao.equals("prepAlteracao")) {
 
                 int id = Integer.parseInt(request.getParameter("id"));
-                Sala a = dao.obterPorId(id);
-                request.setAttribute("sala", a);
+                Sala s = dao.obterPorId(id);
+                request.setAttribute("sala", s);
 
                 disp = request.getRequestDispatcher(
                         "/formularios/salas/alterar.jsp");
@@ -114,8 +114,8 @@ public class SalaServlet extends HttpServlet {
             } else if (acao.equals("prepExclusao")) {
 
                 int id = Integer.parseInt(request.getParameter("id"));
-                Sala a = dao.obterPorId(id);
-                request.setAttribute("sala", a);
+                Sala s = dao.obterPorId(id);
+                request.setAttribute("sala", s);
 
                 disp = request.getRequestDispatcher(
                         "/formularios/salas/excluir.jsp");

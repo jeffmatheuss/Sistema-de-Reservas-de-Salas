@@ -51,7 +51,7 @@ public class SalaDAO extends DAO<Sala> {
     public void atualizar(Sala obj) throws SQLException {
 
         PreparedStatement stmt = getConnection().prepareStatement(
-                "UPDATE usuario "
+                "UPDATE sala "
                 + "SET"
                 + "    tipoSala = ?, "
                 + "    status = ?, "
