@@ -14,8 +14,8 @@ import java.sql.Date;
 public class Reserva {
 
     public int idReserva;
-    public int idUsuario;
-    public int idSala;
+    public Usuario usuario;
+    public Sala sala;
     public Date dataReserva;
 
     public int getIdReserva() {
@@ -26,20 +26,20 @@ public class Reserva {
         this.idReserva = idReserva;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public int getIdSala() {
-        return idSala;
+    public Sala getSala() {
+        return sala;
     }
 
-    public void setIdSala(int idSala) {
-        this.idSala = idSala;
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
 
     public Date getDataReserva() {

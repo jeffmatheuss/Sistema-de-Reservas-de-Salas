@@ -114,11 +114,11 @@ public class SalaDAO extends DAO<Sala> {
             Sala s = new Sala();
 
             s.setIdSala(rs.getInt("idSala"));
-            s.setTipoSala(rs.getString("TipoSala"));
+            s.setTipoSala(rs.getString("tipoSala"));
             s.setStatus(rs.getString("statusSala"));
             s.setDescricao(rs.getString("descricaoSala"));
             s.setLocal(rs.getString("localSala"));
-            s.setEstadoConservacao(rs.getString("estadoConservacao"));
+            s.setEstadoConservacao(rs.getString("estadoConservacaoSala"));
             s.setNumero(rs.getString("numeroSala"));
 
             lista.add(s);
@@ -158,11 +158,11 @@ public class SalaDAO extends DAO<Sala> {
             s = new Sala();
 
             s.setIdSala(rs.getInt("idSala"));
-            s.setTipoSala(rs.getString("TipoSala"));
+            s.setTipoSala(rs.getString("tipoSala"));
             s.setStatus(rs.getString("statusSala"));
             s.setDescricao(rs.getString("descricaoSala"));
             s.setLocal(rs.getString("localSala"));
-            s.setEstadoConservacao(rs.getString("estadoConservacao"));
+            s.setEstadoConservacao(rs.getString("estadoConservacaoSala"));
             s.setNumero(rs.getString("numeroSala"));
 
         }

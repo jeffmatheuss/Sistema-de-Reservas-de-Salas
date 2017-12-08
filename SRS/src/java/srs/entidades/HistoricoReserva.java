@@ -12,9 +12,12 @@ import java.sql.Date;
  * @author Laionel
  */
 public class HistoricoReserva {
+
     public int idHistoricoReserva;
-    public int idUsuario;
-    public int idSala;
+    public Usuario usuario;
+    public Sala sala;
+    public Date dataReserva;
+    public String estadoConservacao;
 
     public int getIdHistoricoReserva() {
         return idHistoricoReserva;
@@ -24,20 +27,20 @@ public class HistoricoReserva {
         this.idHistoricoReserva = idHistoricoReserva;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public int getIdSala() {
-        return idSala;
+    public Sala getSala() {
+        return sala;
     }
 
-    public void setIdSala(int idSala) {
-        this.idSala = idSala;
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
 
     public Date getDataReserva() {
@@ -55,6 +58,5 @@ public class HistoricoReserva {
     public void setEstadoConservacao(String estadoConservacao) {
         this.estadoConservacao = estadoConservacao;
     }
-    public Date dataReserva;
-    public String estadoConservacao;
+
 }

@@ -11,12 +11,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import srs.entidades.Reserva;
+import srs.entidades.Sala;
+import srs.entidades.Usuario;
 
 /**
  *
  * @author Laionel
  */
 public class ReservaDAO extends DAO<Reserva> {
+
     public ReservaDAO() throws SQLException {
     }
 
@@ -31,8 +34,8 @@ public class ReservaDAO extends DAO<Reserva> {
                 + "    dataReserva = ? )"
                 + "VALUES( ?, ?, ? );");
 
-        stmt.setInt(1, obj.getIdUsuario());
-        stmt.setInt(2, obj.getIdSala());
+        stmt.setInt(1, obj.getUsuario().getIdUsuario());
+        stmt.setInt(2, obj.getSala().getIdSala());
         stmt.setDate(3, obj.getDataReserva());
 
         stmt.executeUpdate();
@@ -52,8 +55,8 @@ public class ReservaDAO extends DAO<Reserva> {
                 + "WHERE"
                 + "    idReserva = ? ; ");
 
-        stmt.setInt(1, obj.getIdUsuario());
-        stmt.setInt(2, obj.getIdSala());
+        stmt.setInt(1, obj.getUsuario().getIdUsuario());
+        stmt.setInt(2, obj.getSala().getIdSala());
         stmt.setDate(3, obj.getDataReserva());
         stmt.setInt(7, obj.getIdReserva());
 
@@ -85,22 +88,57 @@ public class ReservaDAO extends DAO<Reserva> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
                 + "    r.idReserva idReserva, "
-                + "    r.idUsuario idUsuario, "
-                + "    r.idSala idSala, "
-                + "    r.dataReserva dataReserva "
+                + "    r.dataReserva dataReserva, "
+                + "    s.idSala idSala, "
+                + "    s.tipoSala tipoSala, "
+                + "    s.status statusSala, "
+                + "    s.descricao descricaoSala, "
+                + "    s.local localSala, "
+                + "    s.estadoConservacao estadoConservacaoSala, "
+                + "    s.numero numeroSala, "
+                + "    u.idUsuario idUsuario, "
+                + "    u.cpf cpfUsuario, "
+                + "    u.nome nomeUsuario, "
+                + "    u.sobrenome sobrenomeUsuario, "
+                + "    u.departamento departamentoUsuario, "
+                + "    u.funcao funcaoUsuario, "
+                + "    u.senha senhaUsuario "
                 + "FROM "
-                + "    reserva r ");
+                + "    reserva r, "
+                + "    sala s,"
+                + "    usuario u "
+                + "WHERE"
+                + "    r.idSala = s.idSala AND "
+                + "    r.idUsuario = u.idUsuario; ");
 
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
 
             Reserva r = new Reserva();
+            Sala s = new Sala();
+            Usuario u = new Usuario();
 
             r.setIdReserva(rs.getInt("idReserva"));
-            r.setIdUsuario(rs.getInt("idUsuario"));
-            r.setIdSala(rs.getInt("idSala"));
+            r.setSala(s);
+            r.setUsuario(u);
             r.setDataReserva(rs.getDate("dataReserva"));
+
+            s.setIdSala(rs.getInt("idSala"));
+            s.setTipoSala(rs.getString("tipoSala"));
+            s.setStatus(rs.getString("statusSala"));
+            s.setDescricao(rs.getString("descricaoSala"));
+            s.setLocal(rs.getString("localSala"));
+            s.setEstadoConservacao(rs.getString("estadoConservacaoSala"));
+            s.setNumero(rs.getString("numeroSala"));
+
+            u.setIdUsuario(rs.getInt("idUsuario"));
+            u.setCpf(rs.getString("cpfUsuario"));
+            u.setNome(rs.getString("nomeUsuario"));
+            u.setSobrenome(rs.getString("sobrenomeUsuario"));
+            u.setDepartamento(rs.getString("departamentoUsuario"));
+            u.setFuncao(rs.getString("funcaoUsuario"));
+            u.setSenha(rs.getString("senhaUsuario"));
 
             lista.add(r);
 
@@ -121,26 +159,60 @@ public class ReservaDAO extends DAO<Reserva> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
                 + "    r.idReserva idReserva, "
-                + "    r.idUsuario idUsuario, "
-                + "    r.idSala idSala, "
-                + "    r.dataReserva dataReserva "
+                + "    r.dataReserva dataReserva, "
+                + "    s.idSala idSala, "
+                + "    s.tipoSala tipoSala, "
+                + "    s.status statusSala, "
+                + "    s.descricao descricaoSala, "
+                + "    s.local localSala, "
+                + "    s.estadoConservacao estadoConservacaoSala, "
+                + "    s.numero numeroSala, "
+                + "    u.idUsuario idUsuario, "
+                + "    u.cpf cpfUsuario, "
+                + "    u.nome nomeUsuario, "
+                + "    u.sobrenome sobrenomeUsuario, "
+                + "    u.departamento departamentoUsuario, "
+                + "    u.funcao funcaoUsuario, "
+                + "    u.senha senhaUsuario "
                 + "FROM "
-                + "    reserva r "
+                + "    reserva r, "
+                + "    sala s,"
+                + "    usuario u "
                 + "WHERE"
-                + "    r.idReserva = ? ");
+                + "    r.idReserva = ? AND "
+                + "    r.idSala = s.idSala AND "
+                + "    r.idUsuario = u.idUsuario; ");
 
         stmt.setInt(1, id);
 
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()) {
-
+            
             r = new Reserva();
+            Sala s = new Sala();
+            Usuario u = new Usuario();
 
             r.setIdReserva(rs.getInt("idReserva"));
-            r.setIdUsuario(rs.getInt("idUsuario"));
-            r.setIdSala(rs.getInt("idSala"));
+            r.setSala(s);
+            r.setUsuario(u);
             r.setDataReserva(rs.getDate("dataReserva"));
+
+            s.setIdSala(rs.getInt("idSala"));
+            s.setTipoSala(rs.getString("tipoSala"));
+            s.setStatus(rs.getString("statusSala"));
+            s.setDescricao(rs.getString("descricaoSala"));
+            s.setLocal(rs.getString("localSala"));
+            s.setEstadoConservacao(rs.getString("estadoConservacaoSala"));
+            s.setNumero(rs.getString("numeroSala"));
+
+            u.setIdUsuario(rs.getInt("idUsuario"));
+            u.setCpf(rs.getString("cpfUsuario"));
+            u.setNome(rs.getString("nomeUsuario"));
+            u.setSobrenome(rs.getString("sobrenomeUsuario"));
+            u.setDepartamento(rs.getString("departamentoUsuario"));
+            u.setFuncao(rs.getString("funcaoUsuario"));
+            u.setSenha(rs.getString("senhaUsuario"));
 
         }
 
