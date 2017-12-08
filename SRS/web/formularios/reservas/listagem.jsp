@@ -3,6 +3,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:if test="${empty usuarioId}">
     <script>
         location.href = '${pageContext.request.contextPath}/';
@@ -51,7 +52,9 @@
                         <td>${reserva.sala.numero}</td>
                         <td>${reserva.sala.tipoSala}</td>
                         <td>${reserva.sala.local}</td>
-                        <td>${reserva.dataReserva}</td>
+                        <td>
+                            <fmt:formatDate pattern="dd/MM/yyyy" value="${reserva.dataReserva}"/>
+                        </td>
                         <td><a href="${pageContext.request.contextPath}/processaReservas?acao=prepExclusao&id=${reserva.idReserva}">Excluir</a></td>
                     </tr>
                 </c:forEach>

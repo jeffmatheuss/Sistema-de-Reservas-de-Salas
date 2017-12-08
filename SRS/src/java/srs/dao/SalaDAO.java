@@ -167,7 +167,6 @@ public class SalaDAO extends DAO<Sala> {
 
         }
     
-
         rs.close();
         stmt.close();
 

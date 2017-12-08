@@ -3,13 +3,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:if test="${empty usuarioId}">
-	<script>
-		location.href='${pageContext.request.contextPath}/';
-	</script>
+    <script>
+        location.href = '${pageContext.request.contextPath}/';
+    </script>
 </c:if>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -26,48 +27,46 @@
               action="${pageContext.request.contextPath}/processaReservas">
 
             <input name="acao" type="hidden" value="excluir"/>
-            <input name="idUsuario" type="hidden" value="${requestScope.reserva.idUsuario}"/>
+            <input name="idReserva" type="hidden" value="${requestScope.reserva.idReserva}"/>
 
             <table>
                 <tr>
-                    <td class="alinharDireita">CPF:</td>
+                    <td class="alinharDireita">Id Reserva: </td>
+                    <td>${requestScope.reserva.idReserva}</td>
+                </tr>
+                <tr>
+                    <td class="alinharDireita">Usuário: </td>
+                    <td>${requestScope.reserva.usuario.nome}</td>
+                </tr>
+                <tr>
+                    <td class="alinharDireita">Departamento: </td>
+                    <td>${requestScope.reserva.usuario.departamento}</td>
+                </tr>
+                <tr>
+                    <td class="alinharDireita">Função: </td>
+                    <td>${requestScope.reserva.usuario.funcao}</td>
+                </tr>
+                <tr>
+                    <td class="alinharDireita">Número: </td>
+                    <td>${requestScope.reserva.sala.numero}</td>
+                </tr>
+                <tr>
+                    <td class="alinharDireita">Tipo Sala: </td>
+                    <td>${requestScope.reserva.sala.tipoSala}</td> 
+                </tr>
+                <tr>
+                    <td class="alinharDireita">Local: </td>
+                    <td>${requestScope.reserva.sala.local}</td> 
+                </tr>
+                <tr>
+                    <td class="alinharDireita">Data Reserva: </td>
                     <td>
-                        ${requestScope.reserva.cpf}
+                        <fmt:formatDate pattern="dd/MM/yyyy" value="${requestScope.reserva.dataReserva}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Nome:</td>
                     <td>
-                        ${requestScope.reserva.nome}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Sobrenome:</td>
-                    <td>
-                        ${requestScope.reserva.sobrenome}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Departamento:</td>
-                    <td>
-                        ${requestScope.reserva.departamento}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Função:</td>
-                    <td>
-                        ${requestScope.reserva.funcao}"
-                    </td>
-                </tr>
-                <tr>
-                    <td class="alinharDireita">Senha:</td>
-                    <td>
-                        ${requestScope.reserva.senha}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="${pageContext.request.contextPath}/formularios/reserva/listagem.jsp">Voltar</a>
+                        <a href="${pageContext.request.contextPath}/formularios/reservas/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Excluir"/>

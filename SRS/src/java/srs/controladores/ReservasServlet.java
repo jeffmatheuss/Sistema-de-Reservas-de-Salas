@@ -15,7 +15,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import srs.entidades.Reserva;
+import srs.entidades.Sala;
+import srs.entidades.Usuario;
 
 /**
  * Servlet para tratar Reservas.
@@ -39,21 +42,23 @@ public class ReservasServlet extends HttpServlet {
         String acao = request.getParameter("acao");
         ReservaDAO dao = null;
         RequestDispatcher disp = null;
-
+        
         try {
 
             dao = new ReservaDAO();
-
+            
             if (acao.equals("criar")) {
-
-                int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+                
+                int idUsuario = Integer.parseInt("usuarioId");
                 int idSala = Integer.parseInt(request.getParameter("idSala"));
                 String dataReserva = request.getParameter("dataReserva");
                                             
                 Reserva r = new Reserva();
                 
-                r.setIdUsuario(idUsuario);
-                r.setIdSala(idSala);
+                Sala s = new Sala();
+                Usuario u = new Usuario();
+                r.setSala(s);
+                r.setUsuario(u);
                 
                 //formatação da data
                 SimpleDateFormat sdf = new SimpleDateFormat( "dd/MM/yyyy" );
@@ -64,7 +69,6 @@ public class ReservasServlet extends HttpServlet {
                     
                 }
                 
-               
                 dao.salvar(r);
 
                 disp = request.getRequestDispatcher(
@@ -72,7 +76,7 @@ public class ReservasServlet extends HttpServlet {
 
             } else if (acao.equals("alterar")) {
 
-                int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+                /*int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
                 int idSala = Integer.parseInt(request.getParameter("idSala"));
                 String dataReserva = request.getParameter("dataReserva");
 
@@ -93,7 +97,7 @@ public class ReservasServlet extends HttpServlet {
                 dao.atualizar(r);
 
                 disp = request.getRequestDispatcher(
-                        "/formularios/reservas/listagem.jsp");
+                        "/formularios/reservas/listagem.jsp");*/
 
             } else if (acao.equals("excluir")) {
 
