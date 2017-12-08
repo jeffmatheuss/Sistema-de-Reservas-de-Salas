@@ -42,3 +42,10 @@ a:hover {
 .alinharDireita {
     text-align: right;
 }
+
+.erroLogin {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    font-size: 1em;
+}

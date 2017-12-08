@@ -1,8 +1,13 @@
 <%-- 
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${empty usuarioId}">
+	<script>
+		location.href='${pageContext.request.contextPath}/';
+	</script>
+</c:if>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -53,7 +58,7 @@
 
         <p><a href="${pageContext.request.contextPath}/formularios/reservas/novo.jsp">Novo Usuário</a></p>
         
-        <p><a href="${pageContext.request.contextPath}/index.jsp">Tela Principal</a></p>
+        <p><a href="${pageContext.request.contextPath}/menu.jsp">Tela Principal</a></p>
 
     </body>
 

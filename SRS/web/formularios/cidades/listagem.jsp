@@ -50,7 +50,7 @@
 
         <p><a href="${pageContext.request.contextPath}/formularios/cidades/novo.jsp">Nova Cidade</a></p>
         
-        <p><a href="${pageContext.request.contextPath}/index.jsp">Tela Principal</a></p>
+        <p><a href="${pageContext.request.contextPath}/menu.jsp">Tela Principal</a></p>
 
     </body>
 

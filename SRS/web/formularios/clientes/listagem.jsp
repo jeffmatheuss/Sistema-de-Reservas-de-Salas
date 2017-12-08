@@ -56,7 +56,7 @@
 
         <p><a href="${pageContext.request.contextPath}/formularios/clientes/novo.jsp">Novo Cliente</a></p>
         
-        <p><a href="${pageContext.request.contextPath}/index.jsp">Tela Principal</a></p>
+        <p><a href="${pageContext.request.contextPath}/menu.jsp">Tela Principal</a></p>
 
     </body>
 

@@ -14,17 +14,36 @@
     </head>
     <body>
 
-        <h1>Sistema de Reservas de Salas</h1>
+        <h1>Login Sistema</h1>
 
-        <p>
-            <a href="${pageContext.request.contextPath}/formularios/salas/listagem.jsp">Salas</a>
-        </p>
-        <p>
-            <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Usuários</a>
-        </p>
-        <p>
-            <a href="${pageContext.request.contextPath}/formularios/reservas/listagem.jsp">Reservas</a>
-        </p>
-
+        <form method="post"
+              action="${pageContext.request.contextPath}/processaUsuarios">
+            <input name="acao" type="hidden" value="login"/>
+            <table>
+                <tr>
+                    <td>Login:</td>
+                    <td>
+                        <input name="usuarioLogin" type="text" size="30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Senha:</td>
+                    <td>
+                        <input name="senhaLogin" type="password" size="30"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="alinharDireita" colspan="2">
+                        <input type="submit" value="Login"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p class="erroLogin">${requestScope.msg}</p>
+                    </td>
+                </tr>
+                
+            </table>
+        </form>
     </body>
 </html>

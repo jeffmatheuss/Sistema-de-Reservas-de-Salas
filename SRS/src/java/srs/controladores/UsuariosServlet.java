@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import srs.entidades.Usuario;
 
 /**
@@ -120,6 +121,30 @@ public class UsuariosServlet extends HttpServlet {
                 disp = request.getRequestDispatcher(
                         "/formularios/usuarios/excluir.jsp");
 
+            } else if (acao.equals("login")) { //em construção
+
+                String usuarioLogin = request.getParameter("usuarioLogin");
+                Usuario u = dao.obterNome(usuarioLogin);
+
+                if (u == null) {
+                    disp = request.getRequestDispatcher(
+                            "index.jsp");
+
+                    request.setAttribute("msg", "Usuário não encontrado");
+                } else {
+                    String senhaLogin = request.getParameter("senhaLogin");
+                    if (u.getSenha().equals(senhaLogin)) {
+                        disp = request.getRequestDispatcher(
+                                "menu.jsp");
+                        HttpSession sessao = request.getSession(true);
+                        sessao.setAttribute("usuarioId", u.getIdUsuario());
+                        sessao.setAttribute("nomeUsuario", u.getNome());
+                    } else {
+                        disp = request.getRequestDispatcher(
+                                "index.jsp");
+                        request.setAttribute("msg", "Senha inválida!");
+                    }
+                }
             }
 
         } catch (SQLException exc) {

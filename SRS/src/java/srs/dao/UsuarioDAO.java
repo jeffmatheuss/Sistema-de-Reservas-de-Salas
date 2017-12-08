@@ -174,4 +174,47 @@ public class UsuarioDAO extends DAO<Usuario> {
 
     }
 
+    public Usuario obterNome(String nome) throws SQLException { //usado pelo login
+
+        Usuario u = null;
+
+        PreparedStatement stmt = getConnection().prepareStatement(
+                "SELECT "
+                + "    u.idUsuario idUsuario, "
+                + "    u.cpf cpfUsuario, "
+                + "    u.nome nomeUsuario, "
+                + "    u.sobrenome sobrenomeUsuario, "
+                + "    u.departamento departamentoUsuario, "
+                + "    u.funcao funcaoUsuario, "
+                + "    u.senha senhaUsuario "
+                + "FROM "
+                + "    usuario u "
+                + "WHERE"
+                + "    u.nome = ? ");
+
+        stmt.setString(1, nome);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+
+            u = new Usuario();
+
+            u.setIdUsuario(rs.getInt("idUsuario"));
+            u.setCpf(rs.getString("cpfUsuario"));
+            u.setNome(rs.getString("nomeUsuario"));
+            u.setSobrenome(rs.getString("sobrenomeUsuario"));
+            u.setDepartamento(rs.getString("departamentoUsuario"));
+            u.setFuncao(rs.getString("funcaoUsuario"));
+            u.setSenha(rs.getString("senhaUsuario"));
+
+        }
+
+        rs.close();
+        stmt.close();
+
+        return u;
+
+    }
+
 }
