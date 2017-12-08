@@ -21,10 +21,14 @@ BEGIN
         FROM   sala
         WHERE  idSala = NEW.idSala
     );
-
+	
     UPDATE historicoreservas
     SET    estadoConservacao = varEstadoConservacao
     WHERE  idHistoricoReserva = varIdHistorico;
+    
+    UPDATE sala
+    SET	   `status` = "Reservada"
+    WHERE idSala = NEW.idSala;
 END //;
 DELIMITER ;
 

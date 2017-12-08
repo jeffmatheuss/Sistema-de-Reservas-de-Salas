@@ -28,9 +28,9 @@ public class SalaDAO extends DAO<Sala> {
                 "INSERT INTO "
                 + "Sala( "
                 + "    tipoSala, "
-                + "    `status`, "
+                + "    status, "
                 + "    descricao, "
-                + "    `local`, "
+                + "    local, "
                 + "    estadoConservacao, "
                 + "    numero )"
                 + "VALUES( ?, ?, ?, ?, ?, ? );");
@@ -54,13 +54,13 @@ public class SalaDAO extends DAO<Sala> {
                 "UPDATE sala "
                 + "SET"
                 + "    tipoSala = ?, "
-                + "    `status` = ?, "
+                + "    status = ?, "
                 + "    descricao = ?, "
-                + "    `local` = ?, "
+                + "    local = ?, "
                 + "    estadoConservacao = ?, "
                 + "    numero = ? "
                 + "WHERE"
-                + "    idSala = ? ; ");
+                + "    idSala = ? ");
 
         stmt.setString(1, obj.getTipoSala());
         stmt.setString(2, obj.getStatus());
@@ -99,9 +99,9 @@ public class SalaDAO extends DAO<Sala> {
                 "SELECT "
                 + "    s.idSala idSala, "
                 + "    s.tipoSala tipoSala, "
-                + "    s.`status` statusSala, "
+                + "    s.status statusSala, "
                 + "    s.descricao descricaoSala, "
-                + "    s.`local` localSala, "
+                + "    s.local localSala, "
                 + "    s.estadoConservacao estadoConservacaoSala, "
                 + "    s.numero numeroSala "
                 + "FROM "
@@ -124,10 +124,52 @@ public class SalaDAO extends DAO<Sala> {
             lista.add(s);
 
         }
-        
+
         rs.close();
         stmt.close();
-        
+
+        return lista;
+    }
+
+    public List<Sala> listarTodosReserva() throws SQLException {
+
+        List<Sala> lista = new ArrayList<>();
+
+        PreparedStatement stmt = getConnection().prepareStatement(
+                "SELECT "
+                + "    s.idSala idSala, "
+                + "    s.tipoSala tipoSala, "
+                + "    s.status statusSala, "
+                + "    s.descricao descricaoSala, "
+                + "    s.local localSala, "
+                + "    s.estadoConservacao estadoConservacaoSala, "
+                + "    s.numero numeroSala "
+                + "FROM "
+                + "    sala s "
+                + "WHERE"
+                + "    s.`status` != 'Reservada' ");
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+
+            Sala s = new Sala();
+
+            s.setIdSala(rs.getInt("idSala"));
+            s.setTipoSala(rs.getString("tipoSala"));
+            s.setStatus(rs.getString("statusSala"));
+            s.setDescricao(rs.getString("descricaoSala"));
+            s.setLocal(rs.getString("localSala"));
+            s.setEstadoConservacao(rs.getString("estadoConservacaoSala"));
+            s.setNumero(rs.getString("numeroSala"));
+
+            lista.add(s);
+
+        }
+
+        rs.close();
+        stmt.close();
+
         return lista;
     }
 

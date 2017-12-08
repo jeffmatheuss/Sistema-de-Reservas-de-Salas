@@ -4,12 +4,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:if test="${empty usuarioId}">
-	<script>
-		location.href='${pageContext.request.contextPath}/';
-	</script>
+    <script>
+        location.href = '${pageContext.request.contextPath}/';
+    </script>
 </c:if>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -30,39 +30,27 @@
             <table>
                 <tr>
                     <td class="alinharDireita">Tipo de Sala:</td>
-                    <td>
-                        <input name="tipoSala" type="text" size="13" value="${requestScope.sala.tipoSala}"/>
-                    </td>
+                    <td>${requestScope.sala.tipoSala}</td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Status:</td>
-                    <td>
-                        <input name="status" type="text" size="20" value="${requestScope.sala.status}"/>
-                    </td>
+                    <td>${requestScope.sala.status}</td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Descrição:</td>
-                    <td>
-                        <input name="descricao" type="text" size="20" value="${requestScope.sala.descricao}"/>
-                    </td>
+                    <td>${requestScope.sala.descricao}</td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Local:</td>
-                    <td>
-                        <input name="local" type="text" size="20" value="${requestScope.sala.local}"/>
-                    </td>
+                    <td>${requestScope.sala.local}                    </td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Estado de Conservação:</td>
-                    <td>
-                        <input name="estadoConservação" type="text" size="20" value="${requestScope.sala.estadoConservacao}"/>
-                    </td>
+                    <td>${requestScope.sala.estadoConservacao}</td>
                 </tr>
                 <tr>
                     <td class="alinharDireita">Número:</td>
-                    <td>
-                        <input name="numero" type="text" size="20" value="${requestScope.sala.numero}" />
-                    </td>
+                    <td>${requestScope.sala.numero}</td>
                 </tr>
                 <tr>
                     <td>

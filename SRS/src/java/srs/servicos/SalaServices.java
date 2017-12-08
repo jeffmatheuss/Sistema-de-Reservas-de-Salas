@@ -44,5 +44,28 @@ public class SalaServices {
         return lista;
 
     }
+    public List<Sala> getTodosReserva() {
+
+        List<Sala> lista = new ArrayList<Sala>();
+        SalaDAO dao = null;
+
+        try {
+            dao = new SalaDAO();
+            lista = dao.listarTodosReserva();
+        } catch ( SQLException exc ) {
+            exc.printStackTrace();
+        } finally {
+            if ( dao != null ) {
+                try {
+                    dao.fecharConexao();
+                } catch ( SQLException exc ) {
+                    exc.printStackTrace();
+                }
+            }
+        }
+
+        return lista;
+
+    }
 
 }

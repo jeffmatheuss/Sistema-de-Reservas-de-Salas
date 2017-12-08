@@ -37,7 +37,10 @@
                 <tr>
                     <td class="alinharDireita">Status:</td>
                     <td>
-                        <input name="status" type="text" size="20"/>
+                        <select name="status">
+                            <option>Disponível</option>
+                            <option>Reservada</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>

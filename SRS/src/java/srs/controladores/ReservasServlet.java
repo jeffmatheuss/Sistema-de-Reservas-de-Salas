@@ -48,8 +48,7 @@ public class ReservasServlet extends HttpServlet {
             dao = new ReservaDAO();
             
             if (acao.equals("criar")) {
-                
-                int idUsuario = Integer.parseInt("usuarioId");
+                int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
                 int idSala = Integer.parseInt(request.getParameter("idSala"));
                 String dataReserva = request.getParameter("dataReserva");
                                             
@@ -57,8 +56,12 @@ public class ReservasServlet extends HttpServlet {
                 
                 Sala s = new Sala();
                 Usuario u = new Usuario();
+                u.setIdUsuario(idUsuario);
+                s.setIdSala(idSala);
                 r.setSala(s);
                 r.setUsuario(u);
+                
+                
                 
                 //formatação da data
                 SimpleDateFormat sdf = new SimpleDateFormat( "dd/MM/yyyy" );

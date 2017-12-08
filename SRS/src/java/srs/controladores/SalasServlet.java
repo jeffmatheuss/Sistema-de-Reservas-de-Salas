@@ -101,7 +101,7 @@ public class SalasServlet extends HttpServlet {
                 dao.excluir(s);
 
                 disp = request.getRequestDispatcher(
-                        "/formularios/sala/listagem.jsp");
+                        "/formularios/salas/listagem.jsp");
 
             } else if (acao.equals("prepAlteracao")) {
 

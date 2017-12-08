@@ -31,8 +31,8 @@ public class ReservaDAO extends DAO<Reserva> {
                 + "reserva( "
                 + "    idUsuario = ?, "
                 + "    idSala = ?, "
-                + "    dataReserva = ? )"
-                + "VALUES( ?, ?, ? );");
+                + "    dataReserva = ? ) "
+                + "VALUES( ?, ?, ? ); ");
 
         stmt.setInt(1, obj.getUsuario().getIdUsuario());
         stmt.setInt(2, obj.getSala().getIdSala());
@@ -58,7 +58,7 @@ public class ReservaDAO extends DAO<Reserva> {
         stmt.setInt(1, obj.getUsuario().getIdUsuario());
         stmt.setInt(2, obj.getSala().getIdSala());
         stmt.setDate(3, obj.getDataReserva());
-        stmt.setInt(7, obj.getIdReserva());
+        stmt.setInt(4, obj.getIdReserva());
 
         stmt.executeUpdate();
         stmt.close();
