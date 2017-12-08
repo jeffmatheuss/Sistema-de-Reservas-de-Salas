@@ -72,22 +72,23 @@ public class ReservasServlet extends HttpServlet {
 
             } else if (acao.equals("alterar")) {
 
-                int id = Integer.parseInt(request.getParameter("idReserva"));
-                String cpf = request.getParameter("cpf");
-                String nome = request.getParameter("nome");
-                String sobrenome = request.getParameter("sobrenome");
-                String departamento = request.getParameter("departamento");
-                String funcao = request.getParameter("funcao");
-                String senha = request.getParameter("senha");
+                int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
+                int idSala = Integer.parseInt(request.getParameter("idSala"));
+                String dataReserva = request.getParameter("dataReserva");
 
                 Reserva r = new Reserva();
-                r.setIdReserva(id);
-                r.setCpf(cpf);
-                r.setNome(nome);
-                r.setSobrenome(sobrenome);
-                r.setDepartamento(departamento);
-                r.setFuncao(funcao);
-                r.setSenha(senha);
+                
+                r.setIdUsuario(idUsuario);
+                r.setIdSala(idSala);
+                
+                //formatação da data
+                SimpleDateFormat sdf = new SimpleDateFormat( "dd/MM/yyyy" );
+                try {
+                    java.util.Date data = sdf.parse( dataReserva );
+                    r.setDataReserva( new java.sql.Date( data.getTime() ) );
+                } catch ( ParseException exc ) {
+                    
+                }
 
                 dao.atualizar(r);
 
