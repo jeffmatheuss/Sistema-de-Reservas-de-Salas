@@ -98,7 +98,7 @@ public class SalaDAO extends DAO<Sala> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
                 + "    s.idSala idSala, "
-                + "    s.tipoSala tipoSala"
+                + "    s.tipoSala tipoSala, "
                 + "    s.`status` statusSala, "
                 + "    s.descricao descricaoSala, "
                 + "    s.`local` localSala, "
@@ -139,7 +139,7 @@ public class SalaDAO extends DAO<Sala> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
                 + "    s.idSala idSala, "
-                + "    s.tipoSala tipoSala"
+                + "    s.tipoSala tipoSala, "
                 + "    s.`status` statusSala, "
                 + "    s.descricao descricaoSala, "
                 + "    s.`local` localSala, "
