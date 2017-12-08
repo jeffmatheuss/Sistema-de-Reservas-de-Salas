@@ -22,45 +22,47 @@
     <body>
 
         <h1>Reservar</h1>
-        <input name="idUsuario" type="hidden" value=""/>
-        <table>
-            <tr>
-                <td class="alinharDireita">Data da Reserva:</td>
-                <td>
-                    <input name="dataReserva" type="text" size="15" />
-                </td>
-            </tr>
-        </table>
         <table class="tabelaListagem">
-            <thead>
+
+            <tr>
+                <th>Id</th>
+                <th>TipoSala</th>
+                <th>Status</th>
+                <th>Descricao</th>
+                <th>Local</th>
+                <th>EstadoConservacao</th>
+                <th>Numero</th>
+                <th>Data Reserva</th>
+                <th>Reservar</th>
+            </tr>
+
+            <jsp:useBean id="servicos" scope="page" class="srs.servicos.SalaServices"/>
+
+            <c:forEach items="${servicos.todosReserva}" var="sala">
                 <tr>
-                    <th>Id</th>
-                    <th>TipoSala</th>
-                    <th>Status</th>
-                    <th>Descricao</th>
-                    <th>Local</th>
-                    <th>EstadoConservacao</th>
-                    <th>Numero</th>
-                    <th>Reservar</th>
+                    <td>${sala.idSala}</td>
+                    <td>${sala.tipoSala}</td>
+                    <td>${sala.status}</td>
+                    <td>${sala.descricao}</td>
+                    <td>${sala.local}</td>
+                    <td>${sala.estadoConservacao}</td>
+                    <td>${sala.numero}</td>
+                    <td>
+                        <input id='data' name="dataReserva" type="text" size="15" value="" onkeyup="document.querySelector('#dataReservaHidden').value = this.value" onchange="document.querySelector('#dataReservaHidden').value = this.value" />
+                        
+                    </td>
+                    <td>
+                        <form method="GET" action="${pageContext.request.contextPath}/processaReservas">
+                            <input type="hidden" name="idSala" value="${sala.idSala}">
+                            <input type="hidden" name="acao" value="criar">
+                            <input type="hidden" name="idUsuario" value="${usuarioId}">
+                            <input type="hidden" name="dataReserva" id="dataReservaHidden" value="">
+                            <input type="submit" value="Reservar">
+                        </form>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <jsp:useBean id="servicos" scope="page" class="srs.servicos.SalaServices"/>
+            </c:forEach>
 
-                <c:forEach items="${servicos.todosReserva}" var="sala">
-                    <tr>
-                        <td>${sala.idSala}</td>
-                        <td>${sala.tipoSala}</td>
-                        <td>${sala.status}</td>
-                        <td>${sala.descricao}</td>
-                        <td>${sala.local}</td>
-                        <td>${sala.estadoConservacao}</td>
-                        <td>${sala.numero}</td>
-                        <td><a href="${pageContext.request.contextPath}/processaReservas?acao=criar&idSala=${sala.idSala}&idUsuario=${usuarioId}&dataReserva=${dataReserva}">Reservar</a></td>
-
-                    </tr>
-                </c:forEach>
-            </tbody>
         </table>
 
         <p><a href="${pageContext.request.contextPath}/menu.jsp">Tela Principal</a></p>

@@ -6,7 +6,6 @@ package srs.controladores;
 
 import srs.dao.ReservaDAO;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import srs.entidades.Reserva;
 import srs.entidades.Sala;
 import srs.entidades.Usuario;
@@ -114,7 +112,7 @@ public class ReservasServlet extends HttpServlet {
                 disp = request.getRequestDispatcher(
                         "/formularios/reservas/listagem.jsp");
 
-            } else if (acao.equals("prepAlteracao")) {
+            } else if (acao.equals("prepReservar")) {
                 /*
                 int id = Integer.parseInt(request.getParameter("id"));
                 Reserva r = dao.obterPorId(id);

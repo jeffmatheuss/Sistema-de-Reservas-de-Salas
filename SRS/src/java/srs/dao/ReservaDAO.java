@@ -29,9 +29,9 @@ public class ReservaDAO extends DAO<Reserva> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "INSERT INTO "
                 + "reserva( "
-                + "    idUsuario = ?, "
-                + "    idSala = ?, "
-                + "    dataReserva = ? ) "
+                + "    idUsuario, "
+                + "    idSala, "
+                + "    dataReserva ) "
                 + "VALUES( ?, ?, ? ); ");
 
         stmt.setInt(1, obj.getUsuario().getIdUsuario());
