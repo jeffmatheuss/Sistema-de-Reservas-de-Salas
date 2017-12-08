@@ -48,12 +48,12 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `srs`.`Sala` (
   `idSala` INT(11) NOT NULL AUTO_INCREMENT,
-  `tipoSala` VARCHAR(45) NOT NULL,
-  `status` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NOT NULL,
-  `local` VARCHAR(45) NOT NULL,
-  `estadoConservacao` VARCHAR(255) NOT NULL,
-  `numero` VARCHAR(45) NULL DEFAULT NULL,
+  `tipoSala` VARCHAR(45) ,
+  `status` VARCHAR(45) ,
+  `descricao` VARCHAR(45) ,
+  `local` VARCHAR(45) ,
+  `estadoConservacao` VARCHAR(45) ,
+  `numero` VARCHAR(45) ,
   PRIMARY KEY (`idSala`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

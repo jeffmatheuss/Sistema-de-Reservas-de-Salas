@@ -25,8 +25,8 @@ public class ConnectionFactory {
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                "jdbc:mysql://localhost/srs",
+                "jdbc:mysql://localhost/SRS",
                 "root",
-                "root");
+                "");
     }
 }

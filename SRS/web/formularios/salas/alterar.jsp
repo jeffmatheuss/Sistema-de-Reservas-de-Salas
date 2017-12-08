@@ -27,6 +27,7 @@
 
             <input name="acao" type="hidden" value="alterar"/>
             <input name="idSala" type="hidden" value="${requestScope.sala.idSala}"/>
+            
             <table>
                 <tr>
                     <td class="alinharDireita">Tipo de Sala:</td>
@@ -61,7 +62,7 @@
                 <tr>
                     <td class="alinharDireita">Número:</td>
                     <td>
-                        <input name="numero" type="text" size="20" value="${requestScope.sala.numero}" />
+                        <input name="numero" type="text" size="20" value="${requestScope.sala.numero}"/>
                     </td>
                 </tr>
                 <tr>
