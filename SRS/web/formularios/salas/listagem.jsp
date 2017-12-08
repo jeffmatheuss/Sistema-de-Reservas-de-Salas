@@ -9,49 +9,51 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Usuários Cadastrados</title>
+        <title>Salas Cadastradas</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css"/>
     </head>
 
     <body>
         
-        <h1>Usuários Cadastrados</h1>
+        <h1>Salas Cadastradas</h1>
 
-        <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Usuário</a></p>
+        <p><a href="${pageContext.request.contextPath}/formularios/salas/novo.jsp">Nova Sala</a></p>
 
         <table class="tabelaListagem">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>CPF</th>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Departamento</th>
-                    <th>Função</th>
+                    <th>TipoSala</th>
+                    <th>Status</th>
+                    <th>Descricao</th>
+                    <th>Local</th>
+                    <th>EstadoConservacao</th>
+                    <th>Numero</th>
                     <th>Alterar</th>
                     <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
 
-                <jsp:useBean id="servicos" scope="page" class="srs.servicos.UsuarioServices"/>
+                <jsp:useBean id="servicos" scope="page" class="srs.servicos.SalaServices"/>
 
-                <c:forEach items="${servicos.todos}" var="usuario">
+                <c:forEach items="${servicos.todos}" var="sala">
                     <tr>
-                        <td>${usuario.idUsuario}</td>
-                        <td>${usuario.cpf}</td>
-                        <td>${usuario.nome}</td>
-                        <td>${usuario.sobrenome}</td>
-                        <td>${usuario.departamento}</td>
-                        <td>${usuario.funcao}</td>                        
-                        <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepAlteracao&id=${usuario.idUsuario}">Alterar</a></td>
-                        <td><a href="${pageContext.request.contextPath}/processaUsuarios?acao=prepExclusao&id=${usuario.idUsuario}">Excluir</a></td>
+                        <td>${sala.idSala}</td>
+                        <td>${sala.tipoSala}</td>
+                        <td>${sala.status}</td>
+                        <td>${sala.descricao}</td>
+                        <td>${sala.local}</td>
+                        <td>${sala.estadoConservacao}</td>
+                        <td>${sala.numero}</td>
+                        <td><a href="${pageContext.request.contextPath}/processaSalas?acao=prepAlteracao&id=${sala.idSala}">Alterar</a></td>
+                        <td><a href="${pageContext.request.contextPath}/processaSalas?acao=prepExclusao&id=${sala.idSala}">Excluir</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
 
-        <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Usuário</a></p>
+        <p><a href="${pageContext.request.contextPath}/formularios/salas/novo.jsp">Nova Sala</a></p>
         
         <p><a href="${pageContext.request.contextPath}/index.jsp">Tela Principal</a></p>
 

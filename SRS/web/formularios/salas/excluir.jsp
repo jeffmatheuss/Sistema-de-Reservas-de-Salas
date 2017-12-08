@@ -9,60 +9,59 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Excluir Usuário</title>
+        <title>Excluir Sala</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css"/>
     </head>
 
     <body>
 
-        <h1>Excluir Usuário</h1>
+        <h1>Excluir Sala</h1>
 
         <form method="post"
-              action="${pageContext.request.contextPath}/processaUsuarios">
+              action="${pageContext.request.contextPath}/processaSalas">
 
             <input name="acao" type="hidden" value="excluir"/>
-            <input name="idUsuario" type="hidden" value="${requestScope.usuario.idUsuario}"/>
-
+            <input name="idSala" type="hidden" value="${requestScope.sala.idSala}"/>
             <table>
                 <tr>
-                    <td class="alinharDireita">CPF:</td>
+                    <td class="alinharDireita">Tipo de Sala:</td>
                     <td>
-                        ${requestScope.usuario.cpf}
+                        <input name="tipoSala" type="text" size="13" value="${requestScope.sala.tipoSala}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Nome:</td>
+                    <td class="alinharDireita">Status:</td>
                     <td>
-                        ${requestScope.usuario.nome}
+                        <input name="status" type="text" size="20" value="${requestScope.sala.status}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Sobrenome:</td>
+                    <td class="alinharDireita">Descrição:</td>
                     <td>
-                        ${requestScope.usuario.sobrenome}
+                        <input name="descricao" type="text" size="20" value="${requestScope.sala.descricao}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Departamento:</td>
+                    <td class="alinharDireita">Local:</td>
                     <td>
-                        ${requestScope.usuario.departamento}
+                        <input name="local" type="text" size="20" value="${requestScope.sala.local}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Função:</td>
+                    <td class="alinharDireita">Estado de Conservação:</td>
                     <td>
-                        ${requestScope.usuario.funcao}"
+                        <input name="estadoConservação" type="text" size="20" value="${requestScope.sala.estadoConservacao}"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Senha:</td>
+                    <td class="alinharDireita">Número:</td>
                     <td>
-                        ${requestScope.usuario.senha}
+                        <input name="numero" type="text" size="20" value="${requestScope.sala.numero}" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Voltar</a>
+                        <a href="${pageContext.request.contextPath}/formularios/salas/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Excluir"/>

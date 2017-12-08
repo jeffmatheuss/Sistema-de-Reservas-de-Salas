@@ -9,59 +9,59 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Novo Usuário</title>
+        <title>Nova Sala</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilos.css"/>
     </head>
 
     <body>
 
-        <h1>Novo Usuário</h1>
+        <h1>Nova Sala</h1>
 
         <form method="post"
-              action="${pageContext.request.contextPath}/processaUsuarios">
+              action="${pageContext.request.contextPath}/processaSalas">
 
             <input name="acao" type="hidden" value="criar"/>
 
             <table>
                 <tr>
-                    <td class="alinharDireita">CPF:</td>
+                    <td class="alinharDireita">Tipo de Sala:</td>
                     <td>
-                        <input name="cpf" type="text" size="13"/>
+                        <input name="tipoSala" type="text" size="20"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Nome:</td>
+                    <td class="alinharDireita">Status:</td>
                     <td>
-                        <input name="nome" type="text" size="20"/>
+                        <input name="status" type="text" size="20"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Sobrenome:</td>
+                    <td class="alinharDireita">Descrição:</td>
                     <td>
-                        <input name="sobrenome" type="text" size="20"/>
+                        <input name="descricao" type="text" size="20"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Departamento:</td>
+                    <td class="alinharDireita">Local:</td>
                     <td>
-                        <input name="departamento" type="text" size="20"/>
+                        <input name="local" type="text" size="20"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Função:</td>
+                    <td class="alinharDireita">Estado de Conservação:</td>
                     <td>
-                        <input name="funcao" type="text" size="20"/>
+                        <input name="estadoConservacao" type="text" size="20"/>
                     </td>
                 </tr>
                 <tr>
-                    <td class="alinharDireita">Senha:</td>
+                    <td class="alinharDireita">Número:</td>
                     <td>
-                        <input name="senha" type="password" size="20"/>
+                        <input name="numero" type="password" size="20"/>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/formularios/usuarios/listagem.jsp">Voltar</a>
+                        <a href="${pageContext.request.contextPath}/formularios/salas/listagem.jsp">Voltar</a>
                     </td>
                     <td class="alinharDireita">
                         <input type="submit" value="Salvar"/>
