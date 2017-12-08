@@ -28,9 +28,9 @@ public class SalaDAO extends DAO<Sala> {
                 "INSERT INTO "
                 + "Sala( "
                 + "    tipoSala, "
-                + "    status, "
+                + "    `status`, "
                 + "    descricao, "
-                + "    local, "
+                + "    `local`, "
                 + "    estadoConservacao, "
                 + "    numero )"
                 + "VALUES( ?, ?, ?, ?, ?, ? );");
@@ -54,9 +54,9 @@ public class SalaDAO extends DAO<Sala> {
                 "UPDATE sala "
                 + "SET"
                 + "    tipoSala = ?, "
-                + "    status = ?, "
+                + "    `status` = ?, "
                 + "    descricao = ?, "
-                + "    local = ?, "
+                + "    `local` = ?, "
                 + "    estadoConservacao = ?, "
                 + "    numero = ? "
                 + "WHERE"
@@ -81,7 +81,7 @@ public class SalaDAO extends DAO<Sala> {
         PreparedStatement stmt = getConnection().prepareStatement(
                 "DELETE FROM sala "
                 + "WHERE"
-                + "    idUsuario = ? ; ");
+                + "    idSala = ? ; ");
 
         stmt.setInt(1, obj.getIdSala());
 
@@ -93,15 +93,15 @@ public class SalaDAO extends DAO<Sala> {
     @Override
     public List<Sala> listarTodos() throws SQLException {
 
-        List<Sala> lista = new ArrayList<Sala>();
+        List<Sala> lista = new ArrayList<>();
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "
                 + "    s.idSala idSala, "
                 + "    s.tipoSala tipoSala"
-                + "    s.status statusSala, "
+                + "    s.`status` statusSala, "
                 + "    s.descricao descricaoSala, "
-                + "    s.local localSala, "
+                + "    s.`local` localSala, "
                 + "    s.estadoConservacao estadoConservacaoSala, "
                 + "    s.numero numeroSala "
                 + "FROM "
@@ -123,10 +123,11 @@ public class SalaDAO extends DAO<Sala> {
 
             lista.add(s);
 
+        }
+        
         rs.close();
         stmt.close();
-
-        }
+        
         return lista;
     }
 
@@ -139,9 +140,9 @@ public class SalaDAO extends DAO<Sala> {
                 "SELECT "
                 + "    s.idSala idSala, "
                 + "    s.tipoSala tipoSala"
-                + "    s.status statusSala, "
+                + "    s.`status` statusSala, "
                 + "    s.descricao descricaoSala, "
-                + "    s.local localSala, "
+                + "    s.`local` localSala, "
                 + "    s.estadoConservacao estadoConservacaoSala, "
                 + "    s.numero numeroSala "
                 + "FROM "
@@ -166,7 +167,7 @@ public class SalaDAO extends DAO<Sala> {
             s.setNumero(rs.getString("numeroSala"));
 
         }
-    
+
         rs.close();
         stmt.close();
 

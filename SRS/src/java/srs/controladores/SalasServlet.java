@@ -19,7 +19,7 @@ import srs.entidades.Sala;
  *
  * @author David Buzatto
  */
-public class SalaServlet extends HttpServlet {
+public class SalasServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -77,14 +77,15 @@ public class SalaServlet extends HttpServlet {
                 String numero = request.getParameter("numero");
 
                 Sala s = new Sala();
-
+                
+                s.setIdSala(id);
                 s.setTipoSala(tipoSala);
                 s.setStatus(status);
                 s.setDescricao(descricao);
                 s.setLocal(local);
                 s.setEstadoConservacao(estadoConservacao);
                 s.setNumero(numero);
-                
+
                 dao.atualizar(s);
 
                 disp = request.getRequestDispatcher(
@@ -166,6 +167,7 @@ public class SalaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         processRequest(request, response);
     }
 

@@ -61,7 +61,7 @@
                 <tr>
                     <td class="alinharDireita">Número:</td>
                     <td>
-                        <input name="numero" type="password" size="20"/>
+                        <input name="numero" type="text" size="20"/>
                     </td>
                 </tr>
                 <tr>

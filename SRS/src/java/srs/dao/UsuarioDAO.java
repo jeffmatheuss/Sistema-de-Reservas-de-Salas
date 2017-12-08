@@ -93,7 +93,7 @@ public class UsuarioDAO extends DAO<Usuario> {
     @Override
     public List<Usuario> listarTodos() throws SQLException {
 
-        List<Usuario> lista = new ArrayList<Usuario>();
+        List<Usuario> lista = new ArrayList<>();
 
         PreparedStatement stmt = getConnection().prepareStatement(
                 "SELECT "

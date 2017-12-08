@@ -112,13 +112,13 @@ public class ReservasServlet extends HttpServlet {
                         "/formularios/reservas/listagem.jsp");
 
             } else if (acao.equals("prepAlteracao")) {
-
+                /*
                 int id = Integer.parseInt(request.getParameter("id"));
                 Reserva r = dao.obterPorId(id);
                 request.setAttribute("reserva", r);
 
                 disp = request.getRequestDispatcher(
-                        "/formularios/reservas/alterar.jsp");
+                        "/formularios/reservas/alterar.jsp");*/
 
             } else if (acao.equals("prepExclusao")) {
 
