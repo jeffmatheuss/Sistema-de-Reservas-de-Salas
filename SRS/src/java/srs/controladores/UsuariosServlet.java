@@ -121,27 +121,37 @@ public class UsuariosServlet extends HttpServlet {
                 disp = request.getRequestDispatcher(
                         "/formularios/usuarios/excluir.jsp");
 
-            } else if (acao.equals("login")) { //em construção
+            } else if (acao.equals("login")) {
 
                 String usuarioLogin = request.getParameter("usuarioLogin");
                 Usuario u = dao.obterNome(usuarioLogin);
 
+                //caso o usuário não for encontrado no banco
                 if (u == null) {
+                    //retorna para o login
                     disp = request.getRequestDispatcher(
                             "index.jsp");
-
+                    //menssagem para o usuário
                     request.setAttribute("msg", "Usuário não encontrado");
+                    //caso o usuário tenha sido encontrado verifica a senha
                 } else {
+                    // verificar a senha
                     String senhaLogin = request.getParameter("senhaLogin");
                     if (u.getSenha().equals(senhaLogin)) {
+                        //senha válida vai para o menu
                         disp = request.getRequestDispatcher(
                                 "menu.jsp");
+                        //cria um objeto da sessao atual
                         HttpSession sessao = request.getSession(true);
+                        //adiciona os atributos na sessão
                         sessao.setAttribute("usuarioId", u.getIdUsuario());
                         sessao.setAttribute("nomeUsuario", u.getNome());
+                    // caso a senha esteja incorreta
                     } else {
+                        //retorna para o login
                         disp = request.getRequestDispatcher(
                                 "index.jsp");
+                        //menssagem para o usuário
                         request.setAttribute("msg", "Senha inválida!");
                     }
                 }
