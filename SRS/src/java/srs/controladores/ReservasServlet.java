@@ -8,6 +8,8 @@ import srs.dao.ReservaDAO;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -46,20 +48,23 @@ public class ReservasServlet extends HttpServlet {
 
                 int idUsuario = Integer.parseInt(request.getParameter("idUsuario"));
                 int idSala = Integer.parseInt(request.getParameter("idSala"));
-                Date dataReserva = request.getParameter("dataReserva");
-                String departamento = request.getParameter("departamento");
-                String funcao = request.getParameter("funcao");
-                String senha = request.getParameter("senha");
-
+                String dataReserva = request.getParameter("dataReserva");
+                                            
                 Reserva r = new Reserva();
-
-                r.setCpf(cpf);
-                r.setNome(nome);
-                r.setSobrenome(sobrenome);
-                r.setDepartamento(departamento);
-                r.setFuncao(funcao);
-                r.setSenha(senha);
-
+                
+                r.setIdUsuario(idUsuario);
+                r.setIdSala(idSala);
+                
+                //formatação da data
+                SimpleDateFormat sdf = new SimpleDateFormat( "dd/MM/yyyy" );
+                try {
+                    java.util.Date data = sdf.parse( dataReserva );
+                    r.setDataReserva( new java.sql.Date( data.getTime() ) );
+                } catch ( ParseException exc ) {
+                    
+                }
+                
+               
                 dao.salvar(r);
 
                 disp = request.getRequestDispatcher(
