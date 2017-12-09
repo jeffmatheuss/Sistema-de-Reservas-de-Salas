@@ -6,8 +6,9 @@
 package srs.entidades;
 
 /**
- *
- * @author Laionel
+ * Entidade Histórico Reserva
+ * Baseado nos códigos de David Buzatto
+ * @author Jeferson
  */
 public class Sala {
     

@@ -17,8 +17,8 @@ import srs.entidades.Usuario;
 
 /**
  * Servlet para tratar Usuarios.
- *
- * @author David Buzatto
+ * Baseado nos códigos de David Buzatto
+ * @author Laionel
  */
 public class UsuariosServlet extends HttpServlet {
 
@@ -155,6 +155,13 @@ public class UsuariosServlet extends HttpServlet {
                         request.setAttribute("msg", "Senha inválida!");
                     }
                 }
+            } else if (acao.equals("logout")) {
+                //cria um objeto da sessao atual
+                        HttpSession sessao = request.getSession(true);
+                        //adiciona os atributos na sessão
+                        sessao.invalidate();
+                        disp = request.getRequestDispatcher(
+                                "index.jsp");
             }
 
         } catch (SQLException exc) {

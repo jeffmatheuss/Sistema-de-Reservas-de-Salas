@@ -1,5 +1,4 @@
-<%-- 
---%>
+<%-- Trabalho PPW - SRS 1.0 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -21,7 +20,7 @@
 
     <body>
 
-        <h1>Usuários Cadastrados</h1>
+        <h1>Salas Reservadas</h1>
 
         <p><a href="${pageContext.request.contextPath}/formularios/reservas/novo.jsp">Reservar</a></p>
 
@@ -36,7 +35,7 @@
                     <th>Tipo Sala</th>
                     <th>Local</th>
                     <th>Data Reserva</th>
-                    <th>Cancelar</th>
+                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>

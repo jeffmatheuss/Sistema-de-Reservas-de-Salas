@@ -8,8 +8,9 @@ package srs.entidades;
 import java.sql.Date;
 
 /**
- *
- * @author Laionel
+ * Entidade Histórico Reserva
+ * Baseado nos códigos de David Buzatto
+ * @author Laionel - Jeferson
  */
 public class HistoricoReserva {
 

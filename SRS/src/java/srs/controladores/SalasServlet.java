@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package srs.controladores;
 
 import srs.dao.SalaDAO;
@@ -16,8 +13,8 @@ import srs.entidades.Sala;
 
 /**
  * Servlet para tratar Usuarios.
- *
- * @author David Buzatto
+ * Baseado nos códigos de David Buzatto
+ * @author Laionel
  */
 public class SalasServlet extends HttpServlet {
 

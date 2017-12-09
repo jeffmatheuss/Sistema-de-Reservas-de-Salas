@@ -1,5 +1,6 @@
 <%-- 
-    Document   : index
+    Trabalho PPW - SRS 1.0
+    Document   : Menu
     Created on : 17/11/2017, 22:05:16
     Author     : Laionel
 --%>
@@ -30,6 +31,9 @@
         </p>
         <p>
             <a href="${pageContext.request.contextPath}/formularios/reservas/listagem.jsp">Reservas</a>
+        </p>
+        <p>
+            <a href="${pageContext.request.contextPath}/processaUsuarios?acao=logout">Logout</a>
         </p>
         <p>Logado como: ${nomeUsuario}</p>
     </body>

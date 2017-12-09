@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package srs.dao;
 
 import java.sql.PreparedStatement;
@@ -15,7 +11,8 @@ import srs.entidades.Sala;
 import srs.entidades.Usuario;
 
 /**
- *
+ * DAO Reserva
+ * Baseado nos códigos de David Buzatto
  * @author Laionel
  */
 public class ReservaDAO extends DAO<Reserva> {

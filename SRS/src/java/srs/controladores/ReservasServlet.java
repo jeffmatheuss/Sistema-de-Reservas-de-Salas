@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package srs.controladores;
 
 import srs.dao.ReservaDAO;
@@ -20,6 +17,8 @@ import srs.entidades.Usuario;
 
 /**
  * Servlet para tratar Reservas.
+ * Baseado nos códigos de David Buzatto
+ * @author Laionel
  */
 public class ReservasServlet extends HttpServlet {
 

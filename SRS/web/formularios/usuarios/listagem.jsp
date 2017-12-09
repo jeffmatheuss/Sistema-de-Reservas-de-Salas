@@ -1,5 +1,4 @@
-<%-- 
---%>
+<%-- Trabalho PPW - SRS 1.0 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -19,7 +18,7 @@
 
     <body>
         
-        <h1>Lista de Usuarios</h1>
+        <h1>Lista de Usuários</h1>
 
         <p><a href="${pageContext.request.contextPath}/formularios/usuarios/novo.jsp">Novo Usuário</a></p>
 

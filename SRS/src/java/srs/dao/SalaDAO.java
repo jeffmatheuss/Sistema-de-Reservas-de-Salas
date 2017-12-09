@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package srs.dao;
 
 import java.sql.PreparedStatement;
@@ -12,9 +9,9 @@ import java.util.List;
 import srs.entidades.Sala;
 
 /**
- * DAO para a entidade Sala.
- *
- * @author David Buzatto
+ * DAO Sala
+ * Baseado nos códigos de David Buzatto
+ * @author Jeferson
  */
 public class SalaDAO extends DAO<Sala> {
 

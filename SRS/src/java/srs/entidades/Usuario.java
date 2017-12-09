@@ -5,8 +5,9 @@
 package srs.entidades;
 
 /**
- *
- * @author Laionel Lellis
+ * Entidade Usuário
+ * Baseado nos códigos de David Buzatto
+ * @author Laionel
  */
 public class Usuario {
 

@@ -1,5 +1,4 @@
-<%-- 
---%>
+<%-- Trabalho PPW - SRS 1.0 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -21,7 +20,7 @@
 
     <body>
 
-        <h1>Excluir Usuário</h1>
+        <h1>Excluir Reserva</h1>
 
         <form method="post"
               action="${pageContext.request.contextPath}/processaReservas">

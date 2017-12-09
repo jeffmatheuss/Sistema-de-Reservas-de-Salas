@@ -1,8 +1,8 @@
 -- MySQL Workbench Synchronization
 -- Generated: 2017-11-30 22:05
--- Model: New Model
+-- Model: Modelo 1.0
 -- Version: 1.0
--- Project: Name of the project
+-- Project: SRS - Sistema Reserva de Salas
 -- Author: laion
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -48,12 +48,12 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `srs`.`Sala` (
   `idSala` INT(11) NOT NULL AUTO_INCREMENT,
-  `tipoSala` VARCHAR(45) ,
-  `status` VARCHAR(45) ,
-  `descricao` VARCHAR(45) ,
-  `local` VARCHAR(45) ,
-  `estadoConservacao` VARCHAR(45) ,
-  `numero` VARCHAR(45) ,
+  `tipoSala` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
+  `descricao` VARCHAR(45) NOT NULL,
+  `local` VARCHAR(45) NOT NULL,
+  `estadoConservacao` VARCHAR(255) NOT NULL,
+  `numero` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`idSala`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -84,3 +84,4 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+

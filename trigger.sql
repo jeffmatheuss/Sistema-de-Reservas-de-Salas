@@ -1,7 +1,10 @@
+-- Model: Modelo 1.0
+-- Version: 1.0
+-- Project: SRS - Sistema Reserva de Salas
+-- Author: laion
 
 use srs;
-drop trigger tg_gravar_historico;
-drop trigger tg_alterar_disp_sala;
+
 DELIMITER //
 CREATE TRIGGER tg_gravar_historico
 AFTER INSERT ON reserva FOR EACH ROW

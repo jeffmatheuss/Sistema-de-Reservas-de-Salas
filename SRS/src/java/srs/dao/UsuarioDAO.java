@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package srs.dao;
 
 import java.sql.PreparedStatement;
@@ -12,8 +9,8 @@ import java.util.List;
 import srs.entidades.Usuario;
 
 /**
- * DAO para a entidade Usuario.
- *
+ * DAO Usuário
+ * Baseado nos códigos de David Buzatto
  * @author Laionel
  */
 public class UsuarioDAO extends DAO<Usuario> {

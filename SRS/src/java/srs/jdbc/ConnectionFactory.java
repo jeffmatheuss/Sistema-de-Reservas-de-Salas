@@ -10,8 +10,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author Laionel Lellis
+ * Conexão Factory
+ * Baseado nos códigos de David Buzatto
+ * @author Laionel - Jeferson
  */
 public class ConnectionFactory {
 
@@ -27,6 +28,6 @@ public class ConnectionFactory {
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost/SRS",
                 "root",
-                "");
+                "root");
     }
 }
